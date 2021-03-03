@@ -90,7 +90,7 @@ namespace Wake_On_Lan_Lite
             var ip = ConfigurationManager.AppSettings["255.255.255.255"];
             var address = IPAddress.Parse(ip);
 
-            sock.SendTo(payload, new IPEndPoint(adresse, 0));
+            sock.SendTo(payload, new IPEndPoint(address, 0));
             sock.Close(10000);
             ProgressBar1.Value = 100;
         }
