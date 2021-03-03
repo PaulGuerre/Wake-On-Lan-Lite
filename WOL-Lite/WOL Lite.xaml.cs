@@ -42,6 +42,7 @@ namespace Wake_On_Lan_Lite
                 LB1.Items.Add(line);
                 cpt++;
             }
+            file.Close();
         }
 
         private void WOL_Click(object sender, RoutedEventArgs e)
