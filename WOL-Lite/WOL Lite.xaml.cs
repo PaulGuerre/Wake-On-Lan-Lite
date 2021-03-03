@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace Wake_On_Lan_Lite
 {
-    public partial class MainWindow : Window
+    public class MainWindow : Window
     {
         public MainWindow()
         {
@@ -28,7 +28,6 @@ namespace Wake_On_Lan_Lite
             }
             else
             {
-                DirectoryInfo di = Directory.CreateDirectory(path);
                 StreamWriter newFile = new StreamWriter(@"C:\WOL\MAC.txt");
                 newFile.Close();
             }
