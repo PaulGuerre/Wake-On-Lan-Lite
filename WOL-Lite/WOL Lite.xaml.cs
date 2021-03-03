@@ -45,6 +45,7 @@ namespace Wake_On_Lan_Lite
             file.Close();
         }
 
+        //Fonction qui appel la fonction WakeUp
         private void WOL_Click(object sender, RoutedEventArgs e)
         {
             //Réinitialisation de la progressBar, puis appel de la méthode WakeUp (Wake On Lan)
@@ -57,6 +58,7 @@ namespace Wake_On_Lan_Lite
             }
         }
 
+        //Fonction qui envoie le paquet pour réveiller la machine
         private void WakeUp(string MAC_ADDRESS)
         {
             //Envoie du "magic packet" vers l'adresse MAC séléctionnée dans la listBox
@@ -95,6 +97,7 @@ namespace Wake_On_Lan_Lite
             ProgressBar1.Value = 100;
         }
 
+        //Fonction qui ajoute une adresse ip
         private void add_Click(object sender, RoutedEventArgs e)
         {
             //Vérification du texte entré dans la textBox (adresse MAC) et ajout de ce dernier dans la listBox ainsi que dans le fichier .txt
@@ -112,6 +115,7 @@ namespace Wake_On_Lan_Lite
             }
         }
 
+        //Fonction qui supprime une adresse ip
         private void del_Click(object sender, RoutedEventArgs e)
         {
             //Suppression des adresses MAC contenues dans la listBox ainsi que dans le fichier .txt
