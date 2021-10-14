@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+﻿using System.IO;
 
 namespace Wake_On_Lan_Lite
 {
@@ -15,9 +10,26 @@ namespace Wake_On_Lan_Lite
         private const string PATH = @"C:\Program Files (x86)\Wake On Lan Lite";
         private const string PATHFILE = @"C:\Program Files (x86)\Wake On Lan Lite\mac_address.json";
 
+        //Function that creates the folder and the file if they don't exist
+        public void createFileIfNotExist()
+        {
+            if (Directory.Exists(PATH))
+            {
+                if (!File.Exists(PATHFILE))
+                {
+                    File.Create(PATHFILE);
+                }
+            }
+            else
+            {
+                Directory.CreateDirectory(PATH);
+                File.Create(PATHFILE);
+            }
+        }
+
         void addAddress()
         {
-
+            
         }
 
         void deleteAddress()
@@ -25,9 +37,9 @@ namespace Wake_On_Lan_Lite
 
         }
 
-        public string getAllAddresses()
+        void getAllAddresses()
         {
-            JObject o1 = JObject.Parse(File.ReadAllText(PATHFILE));
+            /*JObject o1 = JObject.Parse(File.ReadAllText(PATHFILE));
 
             // read JSON directly from a file
             using (StreamReader file = File.OpenText(PATHFILE))
@@ -36,7 +48,7 @@ namespace Wake_On_Lan_Lite
                 JObject o2 = (JObject)JToken.ReadFrom(reader);
             }
 
-            return o1.ToString();
+            return o1.ToString();*/
         }
     }
 }

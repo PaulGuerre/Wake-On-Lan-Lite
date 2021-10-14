@@ -9,9 +9,10 @@
 
     <!--Setup of the personnal title bar-->
     <WindowChrome.WindowChrome>
-        <WindowChrome CaptionHeight="30" />
+        <WindowChrome x:Name="windowChrome" CaptionHeight="27" />
     </WindowChrome.WindowChrome>
     
+    <!-- Buttons style and actions -->
     <Window.Resources>
         <ResourceDictionary>
 
@@ -20,7 +21,7 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
-                            <Grid x:Name="LayoutRoot" Background="Transparent" Width="44" Height="30" VerticalAlignment="Top">
+                            <Grid x:Name="LayoutRoot" Background="Transparent" Width="50" Height="30" VerticalAlignment="Top">
                                 <TextBlock x:Name="txt" Text="{TemplateBinding Content}" FontFamily="Segoe MDL2 Assets" FontSize="10" 
                                    Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"
                                    RenderOptions.ClearTypeHint="Auto" TextOptions.TextRenderingMode="Aliased"  TextOptions.TextFormattingMode="Display"/>
@@ -41,6 +42,16 @@
                 <Setter Property="Content" Value="&#xE949;"/>
             </Style>
 
+            <!--Maximize-->
+            <Style x:Key="MaximizeButtonStyle" TargetType="Button" BasedOn="{StaticResource CaptionButtonStyle}">
+                <Setter Property="Content" Value="&#xE739;"/>
+            </Style>
+
+            <!--Restore-->
+            <Style x:Key="RestoreButtonStyle" TargetType="Button" BasedOn="{StaticResource CaptionButtonStyle}">
+                <Setter Property="Content" Value="&#xE923;"/>
+            </Style>
+
             <!--Close function-->
             <Style x:Key="CloseButtonStyle" TargetType="Button" BasedOn="{StaticResource CaptionButtonStyle}">
                 <Setter Property="Content" Value="&#xE106;"/>
@@ -51,33 +62,48 @@
 
     <!--Title bar button commands-->
     <Window.CommandBindings>
-        <CommandBinding Command="{x:Static SystemCommands.CloseWindowCommand}" CanExecute="CommandBinding_CanExecute" Executed="CommandBinding_Executed_Close" />
         <CommandBinding Command="{x:Static SystemCommands.MinimizeWindowCommand}" CanExecute="CommandBinding_CanExecute" Executed="CommandBinding_Executed_Minimize" />
+        <CommandBinding Command="{x:Static SystemCommands.MaximizeWindowCommand}" CanExecute="CommandBinding_CanExecute" Executed="CommandBinding_Executed_Maximize" />
+        <CommandBinding Command="{x:Static SystemCommands.RestoreWindowCommand}" CanExecute="CommandBinding_CanExecute" Executed="CommandBinding_Executed_Restore" />
+        <CommandBinding Command="{x:Static SystemCommands.CloseWindowCommand}" CanExecute="CommandBinding_CanExecute" Executed="CommandBinding_Executed_Close" />
     </Window.CommandBindings>
 
-    <Grid Background="#454548">
+    <!-- Main content -->
+    <Border x:Name="MainWindowBorder" BorderBrush="Transparent" BorderThickness="0" >
+        <Grid Background="#454548">
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height ="Auto"/>
-            <RowDefinition Height ="*"/>
-        </Grid.RowDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height ="Auto"/>
+                <RowDefinition Height ="*"/>
+            </Grid.RowDefinitions>
 
-        <!--Window chrome-->
-        <Grid Grid.Row="0" Height="30" Background="#323437">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
-                <!--App icon-->
-                <Image Source="/Resources/WOL.png" Width="18" Margin="2" HorizontalAlignment="Left" VerticalAlignment="Center" />
-                <TextBlock Text="Wake On Lan Lite" FontFamily="Arial" Margin="4 3 0 0" Foreground="White"/>
-            </StackPanel>
+            <!--Window chrome-->
+            <Grid Grid.Row="0" Height="30" Background="#323437">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <!--App icon-->
+                    <Image Source="/Resources/WOL.png" Width="18" Margin="2" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                    <TextBlock Text="Wake On Lan Lite" FontFamily="Arial" Margin="4 3 0 0" Foreground="White"/>
+                </StackPanel>
 
-            <!--Caption buttons-->
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
-                <Button Style="{StaticResource MinimizeButtonStyle}" WindowChrome.IsHitTestVisibleInChrome="True" ToolTip="Minimize" Command="{x:Static SystemCommands.MinimizeWindowCommand}"/>
-                <Button Style="{StaticResource CloseButtonStyle}" WindowChrome.IsHitTestVisibleInChrome="True" ToolTip="Close" Command="{x:Static SystemCommands.CloseWindowCommand}"/>
-            </StackPanel>
-        </Grid>
+                <!--Caption buttons-->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
+                    <Button Style="{StaticResource MinimizeButtonStyle}" WindowChrome.IsHitTestVisibleInChrome="True" ToolTip="Minimize" Command="{x:Static SystemCommands.MinimizeWindowCommand}"/>
+                    <Button x:Name="RestoreButton" Visibility="Collapsed" Style="{StaticResource RestoreButtonStyle}" Command="{x:Static SystemCommands.RestoreWindowCommand}" WindowChrome.IsHitTestVisibleInChrome="True" ToolTip="Restore"/>
+                    <Button x:Name="MaximizeButton" Visibility="Visible" Style="{StaticResource MaximizeButtonStyle}" Command="{x:Static SystemCommands.MaximizeWindowCommand}" WindowChrome.IsHitTestVisibleInChrome="True" ToolTip="Maximize" />
+                    <Button Style="{StaticResource CloseButtonStyle}" WindowChrome.IsHitTestVisibleInChrome="True" ToolTip="Close" Command="{x:Static SystemCommands.CloseWindowCommand}"/>
+                </StackPanel>
+            </Grid>
 
-        <!--<Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="1">Button 2</Button>
+            </Grid>
+
+            <!--<Grid>
             <Button x:Name="WOL" Content="Wake Up !" HorizontalAlignment="Left" VerticalAlignment="Top" Width="125" Click="WOL_Click" Background="#FFE6E6E6"/>
             <ListBox x:Name="LB1" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="120"/>
             <TextBox x:Name="TB1" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
@@ -86,6 +112,7 @@
             <ProgressBar x:Name="ProgressBar1" HorizontalAlignment="Left" Height="26" VerticalAlignment="Top" Width="220" Value="0" IsIndeterminate="True"/>
         </Grid>-->
 
-    </Grid>
+        </Grid>
+    </Border>
 
 </Window>
