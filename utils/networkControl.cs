@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 namespace Wake_On_Lan_Lite
 {
     //Class that sends the magic packet 
-    class wakeOnLan
+    class networkControl
     {
         
         //Function that sends the magic packet according to the mac address parameter

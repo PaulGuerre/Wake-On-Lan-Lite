@@ -6,7 +6,7 @@ namespace Wake_On_Lan_Lite
 {
 
     //Class that retrieves the mac addresses from the mac.json file
-    class jsonReader
+    class fileControl
     {
 
         const string PATH = "";
