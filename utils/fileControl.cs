@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Wake_On_Lan_Lite
 {
@@ -9,8 +12,8 @@ namespace Wake_On_Lan_Lite
     class fileControl
     {
 
-        const string PATH = "";
-        const string PATHFILE = "";
+        private const string PATH = @"C:\Program Files (x86)\Wake On Lan Lite";
+        private const string PATHFILE = @"C:\Program Files (x86)\Wake On Lan Lite\mac_address.json";
 
         void addAddress()
         {
@@ -22,9 +25,18 @@ namespace Wake_On_Lan_Lite
 
         }
 
-        void getAllAddresses()
+        public string getAllAddresses()
         {
+            JObject o1 = JObject.Parse(File.ReadAllText(PATHFILE));
 
+            // read JSON directly from a file
+            using (StreamReader file = File.OpenText(PATHFILE))
+            using (JsonTextReader reader = new JsonTextReader(file))
+            {
+                JObject o2 = (JObject)JToken.ReadFrom(reader);
+            }
+
+            return o1.ToString();
         }
     }
 }

@@ -19,6 +19,10 @@ namespace Wake_On_Lan_Lite
         {
             InitializeComponent();
 
+            fileControl file = new fileControl();
+
+            Console.WriteLine(file.getAllAddresses());
+
             //Création du fichier MAC.txt pour stocker les adresses MAC
             /*if (Directory.Exists(PATH))
             {
