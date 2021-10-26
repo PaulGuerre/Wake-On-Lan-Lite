@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Fonts\" />
     <Folder Include="Resources\" />
   </ItemGroup>
 

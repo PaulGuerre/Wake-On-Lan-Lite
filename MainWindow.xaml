@@ -5,13 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wake_On_Lan_Lite"
         mc:Ignorable="d"
-        Title="Wake On Lan Lite">
+        Title="Wake On Lan Lite" Height="450" Width="800"
+        Background="#181735"
+        ResizeMode="NoResize">
 
     <!--Setup of the personnal title bar-->
     <WindowChrome.WindowChrome>
         <WindowChrome x:Name="windowChrome" CaptionHeight="27" />
     </WindowChrome.WindowChrome>
-    
+
     <!-- Buttons style and actions -->
     <Window.Resources>
         <ResourceDictionary>
@@ -23,12 +25,12 @@
                         <ControlTemplate TargetType="Button">
                             <Grid x:Name="LayoutRoot" Background="Transparent" Width="50" Height="30" VerticalAlignment="Top">
                                 <TextBlock x:Name="txt" Text="{TemplateBinding Content}" FontFamily="Segoe MDL2 Assets" FontSize="10" 
-                                   Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                   Foreground="#37c1fe" HorizontalAlignment="Center" VerticalAlignment="Center"
                                    RenderOptions.ClearTypeHint="Auto" TextOptions.TextRenderingMode="Aliased"  TextOptions.TextFormattingMode="Display"/>
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="LayoutRoot" Property="Background" Value="#636365"/>
+                                    <Setter TargetName="LayoutRoot" Property="Background" Value="#181735"/>
                                     <Setter TargetName="txt" Property="Foreground" Value="White"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
@@ -42,16 +44,6 @@
                 <Setter Property="Content" Value="&#xE949;"/>
             </Style>
 
-            <!--Maximize-->
-            <Style x:Key="MaximizeButtonStyle" TargetType="Button" BasedOn="{StaticResource CaptionButtonStyle}">
-                <Setter Property="Content" Value="&#xE739;"/>
-            </Style>
-
-            <!--Restore-->
-            <Style x:Key="RestoreButtonStyle" TargetType="Button" BasedOn="{StaticResource CaptionButtonStyle}">
-                <Setter Property="Content" Value="&#xE923;"/>
-            </Style>
-
             <!--Close function-->
             <Style x:Key="CloseButtonStyle" TargetType="Button" BasedOn="{StaticResource CaptionButtonStyle}">
                 <Setter Property="Content" Value="&#xE106;"/>
@@ -63,44 +55,91 @@
     <!--Title bar button commands-->
     <Window.CommandBindings>
         <CommandBinding Command="{x:Static SystemCommands.MinimizeWindowCommand}" CanExecute="CommandBinding_CanExecute" Executed="CommandBinding_Executed_Minimize" />
-        <CommandBinding Command="{x:Static SystemCommands.MaximizeWindowCommand}" CanExecute="CommandBinding_CanExecute" Executed="CommandBinding_Executed_Maximize" />
-        <CommandBinding Command="{x:Static SystemCommands.RestoreWindowCommand}" CanExecute="CommandBinding_CanExecute" Executed="CommandBinding_Executed_Restore" />
         <CommandBinding Command="{x:Static SystemCommands.CloseWindowCommand}" CanExecute="CommandBinding_CanExecute" Executed="CommandBinding_Executed_Close" />
     </Window.CommandBindings>
 
     <!-- Main content -->
     <Border x:Name="MainWindowBorder" BorderBrush="Transparent" BorderThickness="0" >
-        <Grid Background="#454548">
+        <Grid Background="#0F0F2D">
 
             <Grid.RowDefinitions>
-                <RowDefinition Height ="Auto"/>
-                <RowDefinition Height ="*"/>
+                <RowDefinition Height ="30"/>
+                <RowDefinition />
             </Grid.RowDefinitions>
 
             <!--Window chrome-->
-            <Grid Grid.Row="0" Height="30" Background="#323437">
+            <Grid Grid.Row="0" Height="30" Background="#181735">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
                     <!--App icon-->
                     <Image Source="/Resources/WOL.png" Width="18" Margin="2" HorizontalAlignment="Left" VerticalAlignment="Center" />
-                    <TextBlock Text="Wake On Lan Lite" FontFamily="Arial" Margin="4 3 0 0" Foreground="White"/>
+                    <TextBlock Text="Wake On Lan Lite" Margin="4 3 0 0" Foreground="#37c1fe"/>
                 </StackPanel>
 
                 <!--Caption buttons-->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
                     <Button Style="{StaticResource MinimizeButtonStyle}" WindowChrome.IsHitTestVisibleInChrome="True" ToolTip="Minimize" Command="{x:Static SystemCommands.MinimizeWindowCommand}"/>
-                    <Button x:Name="RestoreButton" Visibility="Collapsed" Style="{StaticResource RestoreButtonStyle}" Command="{x:Static SystemCommands.RestoreWindowCommand}" WindowChrome.IsHitTestVisibleInChrome="True" ToolTip="Restore"/>
-                    <Button x:Name="MaximizeButton" Visibility="Visible" Style="{StaticResource MaximizeButtonStyle}" Command="{x:Static SystemCommands.MaximizeWindowCommand}" WindowChrome.IsHitTestVisibleInChrome="True" ToolTip="Maximize" />
                     <Button Style="{StaticResource CloseButtonStyle}" WindowChrome.IsHitTestVisibleInChrome="True" ToolTip="Close" Command="{x:Static SystemCommands.CloseWindowCommand}"/>
                 </StackPanel>
             </Grid>
 
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
-                <Button Grid.Column="1">Button 2</Button>
+                <ListBox Grid.Column="0">
+                    
+                </ListBox>
+
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="150" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <Button Content="Wake Up" FontSize="15" FontWeight="Medium" Margin="0, 0, 10 ,0" Grid.Row="0" >
+
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis" />
+                                <Setter Property="Background" Value="#37c1fe" />
+                                <Setter Property="Foreground" Value="White" />
+                                <Setter Property="Cursor" Value="Hand" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="White" />
+                                        <Setter Property="Foreground" Value="#37c1fe" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="150" Height="50" CornerRadius="15" Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <Grid Grid.Row="1">
+                        <Grid.RenderTransform>
+                            <RotateTransform Angle="50" />
+                        </Grid.RenderTransform>
+
+                        <StackPanel Orientation="Horizontal" Margin="10, -130, -100, 0">
+                            <StackPanel>
+                                <Border Width="700" Height="35" Background="#3DDDC2" Margin="150, 0, 0, 0" CornerRadius="20" />
+                                <Border Width="700" Height="35" Background="#37c1fe" Margin="0, 15, 0, 0" CornerRadius="20" />
+                                <Border Width="700" Height="35" Background="#04a5b2" Margin="75, 15, 0, 0" CornerRadius="20" />
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+
+                </Grid>
+
             </Grid>
 
             <!--<Grid>

@@ -10,7 +10,6 @@ namespace Wake_On_Lan_Lite
         public MainWindow()
         {
             InitializeComponent();
-            StateChanged += MainWindowStateChangeRaised;
 
             fileControl file = new fileControl();
 
@@ -72,25 +71,6 @@ namespace Wake_On_Lan_Lite
         private void CommandBinding_Executed_Close(object sender, ExecutedRoutedEventArgs e)
         {
             SystemCommands.CloseWindow(this);
-        }
-
-        // State change
-        private void MainWindowStateChangeRaised(object sender, EventArgs e)
-        {
-            if (WindowState == WindowState.Maximized)
-            {
-                MainWindowBorder.BorderThickness = new Thickness(8);
-                RestoreButton.Visibility = Visibility.Visible;
-                MaximizeButton.Visibility = Visibility.Collapsed;
-                windowChrome.CaptionHeight = 30;
-            }
-            else
-            {
-                MainWindowBorder.BorderThickness = new Thickness(0);
-                RestoreButton.Visibility = Visibility.Collapsed;
-                MaximizeButton.Visibility = Visibility.Visible;
-                windowChrome.CaptionHeight = 27;
-            }
         }
 
         /*void WOL_Click(object sender, RoutedEventArgs e)
