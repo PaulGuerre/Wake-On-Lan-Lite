@@ -90,53 +90,117 @@
 
                 <!--Datagrid-->
                 <Grid Grid.Column="0" Margin="25">
-                    <Border BorderThickness="0" Margin="10" CornerRadius="15">
-                        <Grid>
-                            <Border x:Name="BDRounded" BorderThickness="7" CornerRadius="15" Background="#37c1fe"/>
-                            <DataGrid x:Name="dataGrid" CanUserResizeRows="False" CanUserResizeColumns="False" CanUserReorderColumns="False" IsReadOnly="True" HorizontalScrollBarVisibility="Disabled" HeadersVisibility="Column" Margin="10, 10, 10, 10" Background="#181735" BorderBrush="{x:Null}" HorizontalGridLinesBrush="Transparent" VerticalGridLinesBrush="Transparent">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="300"/>
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
 
-                                <DataGrid.ColumnHeaderStyle>
-                                    <Style TargetType="DataGridColumnHeader">
-                                        <Setter Property="Foreground" Value="White" />
+                        <!--Datagrid-->
+                        <Border BorderThickness="0" Margin="10" CornerRadius="15" Grid.Row="0">
+                            <Grid>
+                                <Border x:Name="BDRounded" BorderThickness="7" CornerRadius="15" Background="#37c1fe"/>
+                                <DataGrid x:Name="dataGrid" CanUserResizeRows="False" CanUserResizeColumns="False" CanUserReorderColumns="False" IsReadOnly="True" HorizontalScrollBarVisibility="Disabled" HeadersVisibility="Column" Margin="10, 10, 10, 10" Background="#181735" BorderBrush="{x:Null}" HorizontalGridLinesBrush="Transparent" VerticalGridLinesBrush="Transparent">
+
+                                    <DataGrid.ColumnHeaderStyle>
+                                        <Style TargetType="DataGridColumnHeader">
+                                            <Setter Property="Foreground" Value="White" />
+                                            <Setter Property="Background" Value="#37c1fe" />
+                                            <Setter Property="FontSize" Value="15" />
+                                            <Setter Property="FontWeight" Value="Medium" />
+                                            <Setter Property="FontFamily" Value="Fonts/#Dosis" />
+                                            <Setter Property="Padding" Value="10" />
+                                            <Setter Property="Focusable" Value="False" />
+                                        </Style>
+                                    </DataGrid.ColumnHeaderStyle>
+
+                                    <DataGrid.CellStyle>
+                                        <Style TargetType="DataGridCell">
+                                            <Setter Property="Background" Value="#181735" />
+                                            <Setter Property="Foreground" Value="#37c1fe" />
+                                            <Setter Property="FontSize" Value="15" />
+                                            <Setter Property="FontFamily" Value="Fonts/#Dosis" />
+                                            <Style.Triggers>
+                                                <Trigger Property="IsSelected" Value="True">
+                                                    <Setter Property="Foreground" Value="White" />
+                                                    <Setter Property="BorderBrush" Value="Transparent" />
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </DataGrid.CellStyle>
+
+                                    <DataGrid.RowStyle>
+                                        <Style TargetType="DataGridRow">
+                                            <Setter Property="Background" Value="#181735" />
+                                            <Setter Property="Height" Value="25" />
+                                            <Setter Property="Margin" Value="5" />
+                                        </Style>
+                                    </DataGrid.RowStyle>
+                                </DataGrid>
+                            </Grid>
+                        </Border>
+
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+                            <!--Add button-->
+                            <Button Content="Add" FontSize="15" FontWeight="Medium" Margin="0, 0, 10 ,0" Grid.Column="0" >
+
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis" />
                                         <Setter Property="Background" Value="#37c1fe" />
-                                        <Setter Property="FontSize" Value="15" />
-                                        <Setter Property="FontWeight" Value="Medium" />
-                                        <Setter Property="FontFamily" Value="Fonts/#Dosis" />
-                                        <Setter Property="Padding" Value="10" />
-                                        <Setter Property="Focusable" Value="False" />
-                                    </Style>
-                                </DataGrid.ColumnHeaderStyle>
-
-                                <DataGrid.CellStyle>
-                                    <Style TargetType="DataGridCell">
-                                        <Setter Property="Background" Value="#181735" />
-                                        <Setter Property="Foreground" Value="#37c1fe" />
-                                        <Setter Property="FontSize" Value="15" />
-                                        <Setter Property="FontFamily" Value="Fonts/#Dosis" />
+                                        <Setter Property="Foreground" Value="White" />
+                                        <Setter Property="Cursor" Value="Hand" />
                                         <Style.Triggers>
-                                            <Trigger Property="IsSelected" Value="True">
+                                            <Trigger Property="IsPressed" Value="True">
+                                                <Setter Property="Background" Value="#3DDDC2" />
                                                 <Setter Property="Foreground" Value="White" />
-                                                <Setter Property="BorderBrush" Value="Transparent" />
                                             </Trigger>
                                         </Style.Triggers>
                                     </Style>
-                                </DataGrid.CellStyle>
+                                </Button.Style>
 
-                                <DataGrid.RowStyle>
-                                    <Style TargetType="DataGridRow">
-                                        <Setter Property="Background" Value="#181735" />
-                                        <Setter Property="Height" Value="25" />
-                                        <Setter Property="Margin" Value="5" />
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Width="100" Height="50" CornerRadius="15" Background="{TemplateBinding Background}">
+                                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+
+                            <!--Add button-->
+                            <Button Content="Delete" FontSize="15" FontWeight="Medium" Margin="0, 0, 10 ,0" Grid.Column="1" >
+
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis" />
+                                        <Setter Property="Background" Value="#37c1fe" />
+                                        <Setter Property="Foreground" Value="White" />
+                                        <Setter Property="Cursor" Value="Hand" />
                                         <Style.Triggers>
-                                            <Trigger Property="IsSelected" Value="True">
-                                                <Setter Property="BorderBrush" Value="#37c1fe" />
+                                            <Trigger Property="IsPressed" Value="True">
+                                                <Setter Property="Background" Value="#3DDDC2" />
+                                                <Setter Property="Foreground" Value="White" />
                                             </Trigger>
                                         </Style.Triggers>
                                     </Style>
-                                </DataGrid.RowStyle>
-                            </DataGrid>
+                                </Button.Style>
+
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Width="100" Height="50" CornerRadius="15" Background="{TemplateBinding Background}">
+                                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
                         </Grid>
-                    </Border>
+                    </Grid>
                 </Grid>
 
                 <!--Wake up button-->
