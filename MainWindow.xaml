@@ -88,9 +88,41 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
-                <ListBox Grid.Column="0">
-                    
-                </ListBox>
+                <Grid Grid.Column="0" Margin="25">
+                    <Border BorderThickness="0" Margin="10" CornerRadius="15">
+                        <Grid>
+                            <Border x:Name="BDRounded" BorderThickness="7" CornerRadius="15" Background="#37c1fe"/>
+                            <DataGrid x:Name="dataGrid" HeadersVisibility="Column" Margin="10, 10, 10, 10" Background="#181735" BorderBrush="{x:Null}" HorizontalGridLinesBrush="Transparent" VerticalGridLinesBrush="Transparent">
+                                <DataGrid.ColumnHeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="Foreground" Value="White" />
+                                        <Setter Property="Background" Value="#37c1fe" />
+                                        <Setter Property="FontSize" Value="15" />
+                                        <Setter Property="FontWeight" Value="Medium" />
+                                        <Setter Property="FontFamily" Value="Fonts/#Dosis" />
+                                        <Setter Property="MinWidth" Value="100" />
+                                    </Style>
+                                </DataGrid.ColumnHeaderStyle>
+
+                                <DataGrid.CellStyle>
+                                    <Style TargetType="DataGridCell">
+                                        <Setter Property="Background" Value="#181735" />
+                                        <Setter Property="Foreground" Value="#37c1fe" />
+                                        <Setter Property="FontSize" Value="15" />
+                                        <Setter Property="FontFamily" Value="Fonts/#Dosis" />
+                                    </Style>
+                                </DataGrid.CellStyle>
+
+                                <DataGrid.RowStyle>
+                                    <Style TargetType="DataGridRow">
+                                        <Setter Property="Background" Value="#181735" />
+                                        <Setter Property="Height" Value="25" />
+                                    </Style>
+                                </DataGrid.RowStyle>
+                            </DataGrid>
+                        </Grid>
+                    </Border>
+                </Grid>
 
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
@@ -107,9 +139,9 @@
                                 <Setter Property="Foreground" Value="White" />
                                 <Setter Property="Cursor" Value="Hand" />
                                 <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="White" />
-                                        <Setter Property="Foreground" Value="#37c1fe" />
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter Property="Background" Value="#3DDDC2" />
+                                        <Setter Property="Foreground" Value="White" />
                                     </Trigger>
                                 </Style.Triggers>
                             </Style>

@@ -1,9 +1,17 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Input;
+using System.Collections.Generic;
 
 namespace Wake_On_Lan_Lite
 {
+
+    public class Device
+    {
+        public string NAME { set; get; }
+        public string ADDRESS { set; get; }
+    }
+
     public partial class MainWindow : Window
     {
 
@@ -14,6 +22,14 @@ namespace Wake_On_Lan_Lite
             fileControl file = new fileControl();
 
             file.createFileIfNotExist();
+
+            List<Device> device = new List<Device>();
+
+            device.Add(new Device() { NAME = "Sever0", ADDRESS = "aa:bb:cc:dd:ee:ff" });
+            device.Add(new Device() { NAME = "PC1", ADDRESS = "ff:ee:dd:cc:bb:aa" });
+            device.Add(new Device() { NAME = "Server2", ADDRESS = "zz:yy:xx:ww:vv:uu" });
+
+            dataGrid.ItemsSource = device;
 
             //Création du fichier MAC.txt pour stocker les adresses MAC
             /*if (Directory.Exists(PATH))
