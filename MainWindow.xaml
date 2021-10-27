@@ -71,7 +71,7 @@
             <Grid Grid.Row="0" Height="30" Background="#181735">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
                     <!--App icon-->
-                    <Image Source="/Resources/WOL.png" Width="18" Margin="2" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                    <Image Source="/Resources/wol.ico" Width="18" Margin="2" HorizontalAlignment="Left" VerticalAlignment="Center" />
                     <TextBlock Text="Wake On Lan Lite" Margin="4 3 0 0" Foreground="#37c1fe"/>
                 </StackPanel>
 
@@ -88,11 +88,13 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
+                <!--Datagrid-->
                 <Grid Grid.Column="0" Margin="25">
                     <Border BorderThickness="0" Margin="10" CornerRadius="15">
                         <Grid>
                             <Border x:Name="BDRounded" BorderThickness="7" CornerRadius="15" Background="#37c1fe"/>
-                            <DataGrid x:Name="dataGrid" HeadersVisibility="Column" Margin="10, 10, 10, 10" Background="#181735" BorderBrush="{x:Null}" HorizontalGridLinesBrush="Transparent" VerticalGridLinesBrush="Transparent">
+                            <DataGrid x:Name="dataGrid" CanUserResizeRows="False" CanUserResizeColumns="False" CanUserReorderColumns="False" IsReadOnly="True" HorizontalScrollBarVisibility="Disabled" HeadersVisibility="Column" Margin="10, 10, 10, 10" Background="#181735" BorderBrush="{x:Null}" HorizontalGridLinesBrush="Transparent" VerticalGridLinesBrush="Transparent">
+
                                 <DataGrid.ColumnHeaderStyle>
                                     <Style TargetType="DataGridColumnHeader">
                                         <Setter Property="Foreground" Value="White" />
@@ -100,7 +102,8 @@
                                         <Setter Property="FontSize" Value="15" />
                                         <Setter Property="FontWeight" Value="Medium" />
                                         <Setter Property="FontFamily" Value="Fonts/#Dosis" />
-                                        <Setter Property="MinWidth" Value="100" />
+                                        <Setter Property="Padding" Value="10" />
+                                        <Setter Property="Focusable" Value="False" />
                                     </Style>
                                 </DataGrid.ColumnHeaderStyle>
 
@@ -110,6 +113,12 @@
                                         <Setter Property="Foreground" Value="#37c1fe" />
                                         <Setter Property="FontSize" Value="15" />
                                         <Setter Property="FontFamily" Value="Fonts/#Dosis" />
+                                        <Style.Triggers>
+                                            <Trigger Property="IsSelected" Value="True">
+                                                <Setter Property="Foreground" Value="White" />
+                                                <Setter Property="BorderBrush" Value="Transparent" />
+                                            </Trigger>
+                                        </Style.Triggers>
                                     </Style>
                                 </DataGrid.CellStyle>
 
@@ -117,6 +126,12 @@
                                     <Style TargetType="DataGridRow">
                                         <Setter Property="Background" Value="#181735" />
                                         <Setter Property="Height" Value="25" />
+                                        <Setter Property="Margin" Value="5" />
+                                        <Style.Triggers>
+                                            <Trigger Property="IsSelected" Value="True">
+                                                <Setter Property="BorderBrush" Value="#37c1fe" />
+                                            </Trigger>
+                                        </Style.Triggers>
                                     </Style>
                                 </DataGrid.RowStyle>
                             </DataGrid>
@@ -124,6 +139,7 @@
                     </Border>
                 </Grid>
 
+                <!--Wake up button-->
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="150" />

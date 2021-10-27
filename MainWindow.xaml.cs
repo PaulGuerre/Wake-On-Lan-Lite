@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Input;
 using System.Collections.Generic;
+using System.Windows.Controls;
 
 namespace Wake_On_Lan_Lite
 {
@@ -25,7 +26,7 @@ namespace Wake_On_Lan_Lite
 
             List<Device> device = new List<Device>();
 
-            device.Add(new Device() { NAME = "Sever0", ADDRESS = "aa:bb:cc:dd:ee:ff" });
+            device.Add(new Device() { NAME = "Server number 3", ADDRESS = "aa:bb:cc:dd:ee:ff" });
             device.Add(new Device() { NAME = "PC1", ADDRESS = "ff:ee:dd:cc:bb:aa" });
             device.Add(new Device() { NAME = "Server2", ADDRESS = "zz:yy:xx:ww:vv:uu" });
 
