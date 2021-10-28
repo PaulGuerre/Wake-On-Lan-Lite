@@ -140,6 +140,7 @@
                             </Grid>
                         </Border>
 
+                        <!--Buttons-->
                         <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
@@ -147,7 +148,7 @@
                             </Grid.ColumnDefinitions>
 
                             <!--Add button-->
-                            <Button Content="Add" FontSize="15" FontWeight="Medium" Margin="0, 0, 10 ,0" Grid.Column="0" >
+                            <Button Content="Add" Click="addDevice" FontSize="15" FontWeight="Medium" Margin="0, 0, 10 ,0" Grid.Column="0" >
 
                                 <Button.Style>
                                     <Style TargetType="Button">
