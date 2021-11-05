@@ -71,8 +71,8 @@
             <Grid Grid.Row="0" Height="30" Background="#181735">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
                     <!--App icon-->
-                    <Image Source="/Resources/wol.ico" Width="18" Margin="2" HorizontalAlignment="Left" VerticalAlignment="Center" />
-                    <TextBlock Text="Add a device" Margin="4 3 0 0" Foreground="#37c1fe"/>
+                    <!--<Image Source="/Resources/wol.ico" Width="18" Margin="2" HorizontalAlignment="Left" VerticalAlignment="Center" />-->
+                    <TextBlock Text="Add a device" Margin="10 3 0 0" Foreground="#37c1fe"/>
                 </StackPanel>
 
                 <!--Caption buttons-->
@@ -98,7 +98,7 @@
                     <!--Device name-->
                     <Border BorderThickness="0" CornerRadius="15" Grid.Row="0">
                         <Grid>
-                            <Border x:Name="BDRounded" BorderThickness="20" CornerRadius="20" Background="#37c1fe"/>
+                            <Border BorderThickness="20" CornerRadius="20" Background="#37c1fe"/>
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition />
@@ -108,14 +108,14 @@
                                 </Grid.RowDefinitions>
 
                                 <TextBlock Grid.Row="1" HorizontalAlignment="Center" FontSize="15" FontWeight="Medium" FontFamily="Fonts/#Dosis" Foreground="White">Name</TextBlock>
-                                <TextBox Grid.Row="2" HorizontalAlignment="Center" TextAlignment="Center" Width="150" Height="25">
+                                <TextBox Name="name" Grid.Row="2" HorizontalAlignment="Center" TextAlignment="Center" Width="150" Height="25">
                                     <TextBox.Style>
                                         <Style TargetType="TextBox">
                                             <Setter Property="Background" Value="#181735" />
                                             <Setter Property="Foreground" Value="#37c1fe" />
                                             <Setter Property="BorderBrush" Value="Transparent" />
                                             <Setter Property="VerticalAlignment" Value="Center" />
-                                            <Setter Property="FontSize" Value="14" />
+                                            <Setter Property="FontSize" Value="15" />
                                         </Style>
                                     </TextBox.Style>
                                 </TextBox>
@@ -126,7 +126,7 @@
                     <!--Mac address-->
                     <Border BorderThickness="0" CornerRadius="15" Grid.Row="1">
                         <Grid>
-                            <Border x:Name="BDRounded2" BorderThickness="20" CornerRadius="20" Background="#37c1fe"/>
+                            <Border BorderThickness="20" CornerRadius="20" Background="#37c1fe"/>
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition />
@@ -136,7 +136,7 @@
                                 </Grid.RowDefinitions>
 
                                 <TextBlock Grid.Row="1" HorizontalAlignment="Center" FontSize="15" FontWeight="Medium" FontFamily="Fonts/#Dosis" Foreground="White">Mac address</TextBlock>
-                                <TextBox Grid.Row="2" HorizontalAlignment="Center" TextAlignment="Center" Width="150" Height="25">
+                                <TextBox Name="address" Grid.Row="2" HorizontalAlignment="Center" TextAlignment="Center" Width="150" Height="25">
                                     <TextBox.Style>
                                         <Style TargetType="TextBox">
                                             <Setter Property="Background" Value="#181735" />
@@ -151,6 +151,33 @@
                         </Grid>
                     </Border>
                 </Grid>
+
+                <!--Add button-->
+                <Button Click="add" Content="Add" FontSize="15" FontWeight="Medium" Margin="0, 0, 10 ,0" Grid.Column="1" >
+
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis" />
+                            <Setter Property="Background" Value="#37c1fe" />
+                            <Setter Property="Foreground" Value="White" />
+                            <Setter Property="Cursor" Value="Hand" />
+                            <Style.Triggers>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Background" Value="#3DDDC2" />
+                                    <Setter Property="Foreground" Value="White" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="100" Height="50" CornerRadius="15" Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
             </Grid>
         </Grid>
     </Border>

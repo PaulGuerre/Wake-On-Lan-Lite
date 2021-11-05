@@ -71,8 +71,8 @@
             <Grid Grid.Row="0" Height="30" Background="#181735">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
                     <!--App icon-->
-                    <Image Source="/Resources/wol.ico" Width="18" Margin="2" HorizontalAlignment="Left" VerticalAlignment="Center" />
-                    <TextBlock Text="Wake On Lan Lite" Margin="4 3 0 0" Foreground="#37c1fe"/>
+                    <!--<Image Source="/Resources/wol.ico" Width="18" Margin="2" HorizontalAlignment="Left" VerticalAlignment="Center" />-->
+                    <TextBlock Text="Wake On Lan Lite" Margin="10 3 0 0" Foreground="#37c1fe"/>
                 </StackPanel>
 
                 <!--Caption buttons-->
@@ -100,7 +100,7 @@
                         <Border BorderThickness="0" Margin="10" CornerRadius="15" Grid.Row="0">
                             <Grid>
                                 <Border x:Name="BDRounded" BorderThickness="7" CornerRadius="15" Background="#37c1fe"/>
-                                <DataGrid x:Name="dataGrid" CanUserResizeRows="False" CanUserResizeColumns="False" CanUserReorderColumns="False" IsReadOnly="True" HorizontalScrollBarVisibility="Disabled" HeadersVisibility="Column" Margin="10, 10, 10, 10" Background="#181735" BorderBrush="{x:Null}" HorizontalGridLinesBrush="Transparent" VerticalGridLinesBrush="Transparent">
+                                <DataGrid x:Name="dataGrid" CanUserResizeRows="False" SelectionMode="Single" VerticalScrollBarVisibility="Disabled" CanUserResizeColumns="False" CanUserReorderColumns="False" IsReadOnly="False" CellEditEnding="dg_CellEditEnding" HorizontalScrollBarVisibility="Disabled" HeadersVisibility="Column" Margin="10, 10, 10, 10" Background="#181735" BorderBrush="{x:Null}" HorizontalGridLinesBrush="Transparent" VerticalGridLinesBrush="Transparent">
 
                                     <DataGrid.ColumnHeaderStyle>
                                         <Style TargetType="DataGridColumnHeader">
@@ -111,19 +111,22 @@
                                             <Setter Property="FontFamily" Value="Fonts/#Dosis" />
                                             <Setter Property="Padding" Value="10" />
                                             <Setter Property="Focusable" Value="False" />
+                                            <Setter Property="Width" Value="155" />
                                         </Style>
                                     </DataGrid.ColumnHeaderStyle>
-
+                                   
                                     <DataGrid.CellStyle>
                                         <Style TargetType="DataGridCell">
                                             <Setter Property="Background" Value="#181735" />
                                             <Setter Property="Foreground" Value="#37c1fe" />
                                             <Setter Property="FontSize" Value="15" />
                                             <Setter Property="FontFamily" Value="Fonts/#Dosis" />
+                                            <Setter Property="VerticalAlignment" Value="Center" />
                                             <Style.Triggers>
                                                 <Trigger Property="IsSelected" Value="True">
+                                                    <Setter Property="Background" Value="#37c1fe" />
                                                     <Setter Property="Foreground" Value="White" />
-                                                    <Setter Property="BorderBrush" Value="Transparent" />
+                                                    <Setter Property="BorderBrush" Value="#37c1fe" />
                                                 </Trigger>
                                             </Style.Triggers>
                                         </Style>
@@ -132,8 +135,13 @@
                                     <DataGrid.RowStyle>
                                         <Style TargetType="DataGridRow">
                                             <Setter Property="Background" Value="#181735" />
-                                            <Setter Property="Height" Value="25" />
-                                            <Setter Property="Margin" Value="5" />
+                                            <Setter Property="Height" Value="35" />
+                                            <Style.Triggers>
+                                                <Trigger Property="IsSelected" Value="True">
+                                                    <Setter Property="Background" Value="#37c1fe" />
+                                                    <Setter Property="BorderThickness" Value="0" />
+                                                </Trigger>
+                                            </Style.Triggers>
                                         </Style>
                                     </DataGrid.RowStyle>
                                 </DataGrid>
@@ -148,7 +156,7 @@
                             </Grid.ColumnDefinitions>
 
                             <!--Add button-->
-                            <Button Content="Add" Click="addDevice" FontSize="15" FontWeight="Medium" Margin="0, 0, 10 ,0" Grid.Column="0" >
+                            <Button Content="Add" Name="test" Click="showAdd" FontSize="15" FontWeight="Medium" Margin="0, 0, 10 ,0" Grid.Column="0" >
 
                                 <Button.Style>
                                     <Style TargetType="Button">
@@ -174,7 +182,7 @@
                                 </Button.Template>
                             </Button>
 
-                            <!--Add button-->
+                            <!--Delete button-->
                             <Button Content="Delete" FontSize="15" FontWeight="Medium" Margin="0, 0, 10 ,0" Grid.Column="1" >
 
                                 <Button.Style>

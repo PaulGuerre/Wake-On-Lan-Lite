@@ -22,6 +22,11 @@ namespace Wake_On_Lan_Lite
             InitializeComponent();
         }
 
+        public void add(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         // Can execute
         private void CommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {

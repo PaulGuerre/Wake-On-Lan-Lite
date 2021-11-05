@@ -6,58 +6,52 @@ using System.Windows.Controls;
 
 namespace Wake_On_Lan_Lite
 {
-
-    public class Device
-    {
-        public string NAME { set; get; }
-        public string ADDRESS { set; get; }
-    }
-
     public partial class MainWindow : Window
     {
+        private List<Device> devices = new List<Device>();
 
         public MainWindow()
         {
             InitializeComponent();
 
             fileControl file = new fileControl();
-
             file.createFileIfNotExist();
 
-            List<Device> device = new List<Device>();
+            dataGrid.ItemsSource = this.devices;
+            this.devices.Add(new Device() { NAME = "Server number 3", ADDRESS = "aa:bb:cc:dd:ee:ff" });
+            this.devices.Add(new Device() { NAME = "PC1", ADDRESS = "ff:ee:dd:cc:bb:aa" });
+            this.devices.Add(new Device() { NAME = "Server2", ADDRESS = "zz:yy:xx:ww:vv:uu" });
+        }
 
-            device.Add(new Device() { NAME = "Server number 3", ADDRESS = "aa:bb:cc:dd:ee:ff" });
-            device.Add(new Device() { NAME = "PC1", ADDRESS = "ff:ee:dd:cc:bb:aa" });
-            device.Add(new Device() { NAME = "Server2", ADDRESS = "zz:yy:xx:ww:vv:uu" });
-
-            dataGrid.ItemsSource = device;
-
-            //Création du fichier MAC.txt pour stocker les adresses MAC
-            /*if (Directory.Exists(PATH))
+        public void dg_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            if(dataGrid.CurrentColumn != null)
             {
-                if (!File.Exists(PATHFILE))
+                if (dataGrid.CurrentColumn.DisplayIndex == dataGrid.Columns.Count - 2)
                 {
-                    StreamWriter newFile = new StreamWriter(PATHFILE);
-                    newFile.Close();
+                    TextBox t = e.EditingElement as TextBox;
+                    this.devices.Add(new Device() { NAME = t.Text.ToString(), ADDRESS = "" });
+                    dataGrid.ItemsSource = null;
+                    dataGrid.ItemsSource = this.devices;
+                    dataGrid.CurrentCell = new DataGridCellInfo(dataGrid.Items[dataGrid.Items.Count - 2], dataGrid.Columns[dataGrid.Columns.Count - 1]);
+                    dataGrid.BeginEdit();
+                }
+                else
+                {
+                    TextBox t = e.EditingElement as TextBox;
+                    this.devices[dataGrid.Items.Count - 2].ADDRESS = t.Text.ToString();
+                    dataGrid.ItemsSource = null;
+                    dataGrid.ItemsSource = this.devices;
+                    dataGrid.CurrentCell = new DataGridCellInfo(dataGrid.Items[dataGrid.Items.Count - 1], dataGrid.Columns[dataGrid.Columns.Count - 2]);
+                    dataGrid.BeginEdit();
                 }
             }
-            else
-            {
-                DirectoryInfo di = Directory.CreateDirectory(PATH);
-                StreamWriter newFile = new StreamWriter(PATHFILE);
-                newFile.Close();
-            }*/
+        }
 
-            //Récupération des adresses MAC stockées dans le fichier .txt et affichage de ces données dans la listBox
-            /*int cpt = 0;
-            string line;
-
-            StreamReader file = new StreamReader(PATHFILE);
-            while ((line = file.ReadLine()) != null)
-            {
-                LB1.Items.Add(line);
-                cpt++;
-            }*/
+        public void showAdd(object sender, RoutedEventArgs e)
+        {
+            dataGrid.CurrentCell = new DataGridCellInfo(dataGrid.Items[dataGrid.Items.Count - 1], dataGrid.Columns[dataGrid.Columns.Count - 2]);
+            dataGrid.BeginEdit();
         }
 
         // Can execute
@@ -76,12 +70,6 @@ namespace Wake_On_Lan_Lite
         private void CommandBinding_Executed_Close(object sender, ExecutedRoutedEventArgs e)
         {
             SystemCommands.CloseWindow(this);
-        }
-
-        private void addDevice(object sender, RoutedEventArgs e)
-        {
-            addDevice add = new addDevice();
-            add.Show();
         }
 
         /*void WOL_Click(object sender, RoutedEventArgs e)
