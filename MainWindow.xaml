@@ -49,6 +49,67 @@
                 <Setter Property="Content" Value="&#xE106;"/>
             </Style>
 
+            <!--App buttons style-->
+            <Style x:Key="appButtonStyle" TargetType="Button">
+                <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis" />
+                <Setter Property="Background" Value="#37c1fe" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="Cursor" Value="Hand" />
+                <Style.Triggers>
+                    <Trigger Property="IsPressed" Value="True">
+                        <Setter Property="Background" Value="#3DDDC2" />
+                        <Setter Property="Foreground" Value="White" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <!--Datagrid Column Header style-->
+            <Style x:Key="datagridColumnHeaderStyle" TargetType="DataGridColumnHeader">
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="Background" Value="#37c1fe" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="FontWeight" Value="Medium" />
+                <Setter Property="FontFamily" Value="Fonts/#Dosis" />
+                <Setter Property="Padding" Value="10" />
+                <Setter Property="Focusable" Value="False" />
+                <Setter Property="Width" Value="155" />
+            </Style>
+
+            <!--Datagrid Cell style-->
+            <Style x:Key="datagridCellStyle" TargetType="DataGridCell">
+                <Setter Property="Background" Value="#181735" />
+                <Setter Property="Foreground" Value="#37c1fe" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="FontFamily" Value="Fonts/#Dosis" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+                <Style.Triggers>
+                    <Trigger Property="IsSelected" Value="True">
+                        <Setter Property="Background" Value="#37c1fe" />
+                        <Setter Property="Foreground" Value="White" />
+                        <Setter Property="BorderBrush" Value="#37c1fe" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <!--Datagrid Row style-->
+            <Style x:Key="datagridRowStyle" TargetType="DataGridRow">
+                <Setter Property="Background" Value="#181735" />
+                <Setter Property="Height" Value="35" />
+                <Style.Triggers>
+                    <Trigger Property="IsSelected" Value="True">
+                        <Setter Property="Background" Value="#37c1fe" />
+                        <Setter Property="BorderThickness" Value="0" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <!--App buttons template-->
+            <ControlTemplate x:Key="appButtonTemplate" TargetType="Button">
+                <Border Width="100" Height="50" CornerRadius="15" Background="{TemplateBinding Background}">
+                    <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
+                </Border>
+            </ControlTemplate>
+
         </ResourceDictionary>
     </Window.Resources>
 
@@ -100,50 +161,10 @@
                         <Border BorderThickness="0" Margin="10" CornerRadius="15" Grid.Row="0">
                             <Grid>
                                 <Border x:Name="BDRounded" BorderThickness="7" CornerRadius="15" Background="#37c1fe"/>
-                                <DataGrid x:Name="dataGrid" CanUserResizeRows="False" SelectionMode="Single" VerticalScrollBarVisibility="Disabled" CanUserResizeColumns="False" CanUserReorderColumns="False" IsReadOnly="False" CellEditEnding="dg_CellEditEnding" HorizontalScrollBarVisibility="Disabled" HeadersVisibility="Column" Margin="10, 10, 10, 10" Background="#181735" BorderBrush="{x:Null}" HorizontalGridLinesBrush="Transparent" VerticalGridLinesBrush="Transparent">
-
-                                    <DataGrid.ColumnHeaderStyle>
-                                        <Style TargetType="DataGridColumnHeader">
-                                            <Setter Property="Foreground" Value="White" />
-                                            <Setter Property="Background" Value="#37c1fe" />
-                                            <Setter Property="FontSize" Value="15" />
-                                            <Setter Property="FontWeight" Value="Medium" />
-                                            <Setter Property="FontFamily" Value="Fonts/#Dosis" />
-                                            <Setter Property="Padding" Value="10" />
-                                            <Setter Property="Focusable" Value="False" />
-                                            <Setter Property="Width" Value="155" />
-                                        </Style>
-                                    </DataGrid.ColumnHeaderStyle>
-                                   
-                                    <DataGrid.CellStyle>
-                                        <Style TargetType="DataGridCell">
-                                            <Setter Property="Background" Value="#181735" />
-                                            <Setter Property="Foreground" Value="#37c1fe" />
-                                            <Setter Property="FontSize" Value="15" />
-                                            <Setter Property="FontFamily" Value="Fonts/#Dosis" />
-                                            <Setter Property="VerticalAlignment" Value="Center" />
-                                            <Style.Triggers>
-                                                <Trigger Property="IsSelected" Value="True">
-                                                    <Setter Property="Background" Value="#37c1fe" />
-                                                    <Setter Property="Foreground" Value="White" />
-                                                    <Setter Property="BorderBrush" Value="#37c1fe" />
-                                                </Trigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </DataGrid.CellStyle>
-
-                                    <DataGrid.RowStyle>
-                                        <Style TargetType="DataGridRow">
-                                            <Setter Property="Background" Value="#181735" />
-                                            <Setter Property="Height" Value="35" />
-                                            <Style.Triggers>
-                                                <Trigger Property="IsSelected" Value="True">
-                                                    <Setter Property="Background" Value="#37c1fe" />
-                                                    <Setter Property="BorderThickness" Value="0" />
-                                                </Trigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </DataGrid.RowStyle>
+                                <DataGrid x:Name="dataGrid" ColumnHeaderStyle="{StaticResource datagridColumnHeaderStyle}" CellStyle="{StaticResource datagridCellStyle}" RowStyle="{StaticResource datagridRowStyle}" 
+                                          CanUserResizeRows="False" SelectionMode="Single" VerticalScrollBarVisibility="Disabled" CanUserResizeColumns="False" CanUserReorderColumns="False" IsReadOnly="False" 
+                                          CellEditEnding="dg_CellEditEnding" HorizontalScrollBarVisibility="Disabled" HeadersVisibility="Column" Margin="10, 10, 10, 10" Background="#181735" BorderBrush="{x:Null}" 
+                                          HorizontalGridLinesBrush="Transparent" VerticalGridLinesBrush="Transparent">
                                 </DataGrid>
                             </Grid>
                         </Border>
@@ -156,58 +177,12 @@
                             </Grid.ColumnDefinitions>
 
                             <!--Add button-->
-                            <Button Content="Add" Name="test" Click="showAdd" FontSize="15" FontWeight="Medium" Margin="0, 0, 10 ,0" Grid.Column="0" >
-
-                                <Button.Style>
-                                    <Style TargetType="Button">
-                                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis" />
-                                        <Setter Property="Background" Value="#37c1fe" />
-                                        <Setter Property="Foreground" Value="White" />
-                                        <Setter Property="Cursor" Value="Hand" />
-                                        <Style.Triggers>
-                                            <Trigger Property="IsPressed" Value="True">
-                                                <Setter Property="Background" Value="#3DDDC2" />
-                                                <Setter Property="Foreground" Value="White" />
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Button.Style>
-
-                                <Button.Template>
-                                    <ControlTemplate TargetType="Button">
-                                        <Border Width="100" Height="50" CornerRadius="15" Background="{TemplateBinding Background}">
-                                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
-                                        </Border>
-                                    </ControlTemplate>
-                                </Button.Template>
+                            <Button Content="Add" Name="test" Click="showAdd" FontSize="15" FontWeight="Medium" Margin="0, 0, 10 ,0" Grid.Column="0" Style="{StaticResource appButtonStyle}" 
+                                    Template="{StaticResource appButtonTemplate}">
                             </Button>
 
                             <!--Delete button-->
-                            <Button Content="Delete" FontSize="15" FontWeight="Medium" Margin="0, 0, 10 ,0" Grid.Column="1" >
-
-                                <Button.Style>
-                                    <Style TargetType="Button">
-                                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis" />
-                                        <Setter Property="Background" Value="#37c1fe" />
-                                        <Setter Property="Foreground" Value="White" />
-                                        <Setter Property="Cursor" Value="Hand" />
-                                        <Style.Triggers>
-                                            <Trigger Property="IsPressed" Value="True">
-                                                <Setter Property="Background" Value="#3DDDC2" />
-                                                <Setter Property="Foreground" Value="White" />
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Button.Style>
-
-                                <Button.Template>
-                                    <ControlTemplate TargetType="Button">
-                                        <Border Width="100" Height="50" CornerRadius="15" Background="{TemplateBinding Background}">
-                                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
-                                        </Border>
-                                    </ControlTemplate>
-                                </Button.Template>
-                            </Button>
+                            <Button Content="Delete" FontSize="15" FontWeight="Medium" Margin="0, 0, 10 ,0" Grid.Column="1" Style="{StaticResource appButtonStyle}" Template="{StaticResource appButtonTemplate}" ></Button>
                         </Grid>
                     </Grid>
                 </Grid>
@@ -219,32 +194,10 @@
                         <RowDefinition />
                     </Grid.RowDefinitions>
 
-                    <Button Content="Wake Up" FontSize="15" FontWeight="Medium" Margin="0, 0, 10 ,0" Grid.Row="0" >
+                    <!--Button-->
+                    <Button Content="Wake Up" FontSize="15" FontWeight="Medium" Margin="0, 0, 10 ,0" Grid.Row="0" Style="{StaticResource appButtonStyle}" Template="{StaticResource appButtonTemplate}" ></Button>
 
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis" />
-                                <Setter Property="Background" Value="#37c1fe" />
-                                <Setter Property="Foreground" Value="White" />
-                                <Setter Property="Cursor" Value="Hand" />
-                                <Style.Triggers>
-                                    <Trigger Property="IsPressed" Value="True">
-                                        <Setter Property="Background" Value="#3DDDC2" />
-                                        <Setter Property="Foreground" Value="White" />
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <Border Width="150" Height="50" CornerRadius="15" Background="{TemplateBinding Background}">
-                                    <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
-                                </Border>
-                            </ControlTemplate>
-                        </Button.Template>
-                    </Button>
-
+                    <!--StackPanel lines-->
                     <Grid Grid.Row="1">
                         <Grid.RenderTransform>
                             <RotateTransform Angle="50" />
@@ -260,18 +213,7 @@
                     </Grid>
 
                 </Grid>
-
             </Grid>
-
-            <!--<Grid>
-            <Button x:Name="WOL" Content="Wake Up !" HorizontalAlignment="Left" VerticalAlignment="Top" Width="125" Click="WOL_Click" Background="#FFE6E6E6"/>
-            <ListBox x:Name="LB1" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="TB1" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-            <Button x:Name="add" Content="Add" HorizontalAlignment="Left" VerticalAlignment="Top" Width="59" Click="add_Click" Background="#FF64DC41"/>
-            <Button x:Name="del" Content="Delete" HorizontalAlignment="Left" VerticalAlignment="Top" Width="56" Click="del_Click" Background="#FFFB0000"/>
-            <ProgressBar x:Name="ProgressBar1" HorizontalAlignment="Left" Height="26" VerticalAlignment="Top" Width="220" Value="0" IsIndeterminate="True"/>
-        </Grid>-->
-
         </Grid>
     </Border>
 
