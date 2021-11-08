@@ -91,58 +91,5 @@ namespace Wake_On_Lan_Lite
         {
             SystemCommands.CloseWindow(this);
         }
-
-        /*void WOL_Click(object sender, RoutedEventArgs e)
-        {
-            //Réinitialisation de la progressBar, puis appel de la méthode WakeUp (Wake On Lan)
-            ProgressBar1.Value = 0;
-            ProgressBar1.IsIndeterminate = false;
-
-            if (LB1.SelectedItem != null)
-            {
-                WakeUp(LB1.SelectedItem.ToString());
-            }
-        }
-
-        void add_Click(object sender, RoutedEventArgs e)
-        {
-            //Vérification du texte entré dans la textBox (adresse MAC) et ajout de ce dernier dans la listBox ainsi que dans le fichier .txt
-            Regex r = new Regex("^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$");
-
-            if (r.IsMatch(TB1.Text))
-            {
-                LB1.Items.Add(TB1.Text);
-
-                using (StreamWriter file =
-                    new StreamWriter(PATHFILE, true))
-                {
-                    file.WriteLine(TB1.Text);
-                }
-            }
-        }
-
-        void del_Click(object sender, RoutedEventArgs e)
-        {
-            //Suppression des adresses MAC contenues dans la listBox ainsi que dans le fichier .txt
-            if (LB1.Items.Count == 1)
-            {
-                LB1.Items.Clear();
-                string[] lines = { };
-                File.WriteAllLines(PATHFILE, lines);
-            }
-            else
-            {
-                int pos = LB1.SelectedIndex;
-
-                var file = new List<string>(File.ReadAllLines(PATHFILE));
-                if (pos != 0)
-                {
-                    file.RemoveAt(pos);
-                    File.WriteAllLines(PATHFILE, file.ToArray());
-                }
-
-                LB1.Items.Remove(LB1.SelectedItem);
-            }
-        }*/
     }
 }
