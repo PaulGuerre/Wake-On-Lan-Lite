@@ -17,23 +17,23 @@ namespace Wake_On_Lan_Lite
             fileControl file = new fileControl();
             file.createFileIfNotExist();
 
-            dataGrid.ItemsSource = this.devices;
+            /*dataGrid.ItemsSource = this.devices;
             this.devices.Add(new Device() { NAME = "Server number 3", ADDRESS = "aa:bb:cc:dd:ee:ff" });
             this.devices.Add(new Device() { NAME = "PC1", ADDRESS = "ff:ee:dd:cc:bb:aa" });
-            this.devices.Add(new Device() { NAME = "Server2", ADDRESS = "zz:yy:xx:ww:vv:uu" });
+            this.devices.Add(new Device() { NAME = "Server2", ADDRESS = "zz:yy:xx:ww:vv:uu" });*/
         }
 
         //Refresh dataGrid data
         public void dataRefresh()
         {
-            dataGrid.ItemsSource = null;
-            dataGrid.ItemsSource = this.devices;
+            /*dataGrid.ItemsSource = null;
+            dataGrid.ItemsSource = this.devices;*/
         }
 
         //Add data to dataGrid and file
         public void addData(string name, string address)
         {
-            if(address == null)
+            /*if(address == null)
             {
                 //fileControl.add...
                 this.devices.Add(new Device() { NAME = name, ADDRESS = "" });
@@ -43,12 +43,12 @@ namespace Wake_On_Lan_Lite
                 //fileControl.update...
                 this.devices[dataGrid.Items.Count - 2].ADDRESS = address;
             }
-            dataRefresh();
+            dataRefresh();*/
         }
 
         public void dg_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
-            if(dataGrid.CurrentColumn != null)
+            /*if(dataGrid.CurrentColumn != null)
             {
                 TextBox t = e.EditingElement as TextBox;
 
@@ -64,14 +64,14 @@ namespace Wake_On_Lan_Lite
                 }
 
                 dataGrid.BeginEdit();
-            }
+            }*/
         }
 
         //When click "add" button
         public void showAdd(object sender, RoutedEventArgs e)
         {
-            dataGrid.CurrentCell = new DataGridCellInfo(dataGrid.Items[dataGrid.Items.Count - 1], dataGrid.Columns[dataGrid.Columns.Count - 2]);
-            dataGrid.BeginEdit();
+            /*dataGrid.CurrentCell = new DataGridCellInfo(dataGrid.Items[dataGrid.Items.Count - 1], dataGrid.Columns[dataGrid.Columns.Count - 2]);
+            dataGrid.BeginEdit();*/
         }
 
         // Can execute

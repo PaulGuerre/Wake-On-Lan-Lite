@@ -110,6 +110,22 @@
                 </Border>
             </ControlTemplate>
 
+            <!--ListBox item style-->
+            <Style x:Key="itemContainerStyle" TargetType="ListBoxItem">
+                
+                <Setter Property="Background" Value="#37c1fe" />
+                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="FontWeight" Value="Medium" />
+                <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis" />
+                <Setter Property="Margin" Value="5" />
+                <Style.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="50"/>
+                    </Style>
+                </Style.Resources>
+            </Style>
+
         </ResourceDictionary>
     </Window.Resources>
 
@@ -145,44 +161,40 @@
 
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
+                    <ColumnDefinition Width="500"/>
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
                 <!--Datagrid-->
                 <Grid Grid.Column="0" Margin="25">
                     <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="300"/>
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
 
-                        <!--Datagrid-->
-                        <Border BorderThickness="0" Margin="10" CornerRadius="15" Grid.Row="0">
-                            <Grid>
-                                <Border x:Name="BDRounded" BorderThickness="7" CornerRadius="15" Background="#37c1fe"/>
-                                <DataGrid x:Name="dataGrid" ColumnHeaderStyle="{StaticResource datagridColumnHeaderStyle}" CellStyle="{StaticResource datagridCellStyle}" RowStyle="{StaticResource datagridRowStyle}" 
-                                          CanUserResizeRows="False" SelectionMode="Single" VerticalScrollBarVisibility="Disabled" CanUserResizeColumns="False" CanUserReorderColumns="False" IsReadOnly="False" 
-                                          CellEditEnding="dg_CellEditEnding" HorizontalScrollBarVisibility="Disabled" HeadersVisibility="Column" Margin="10, 10, 10, 10" Background="#181735" BorderBrush="{x:Null}" 
-                                          HorizontalGridLinesBrush="Transparent" VerticalGridLinesBrush="Transparent">
-                                </DataGrid>
-                            </Grid>
-                        </Border>
+                        <!--ListBox-->
+                        <ListBox Grid.Column="1" Background="Transparent" BorderBrush="Transparent" ItemContainerStyle="{DynamicResource itemContainerStyle}" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                            <ListBoxItem Height="100" Width="100">Server 1</ListBoxItem>
+                            <ListBoxItem Height="100" Width="100">Server 2</ListBoxItem>
+                            <ListBoxItem Height="100" Width="100">Server 3</ListBoxItem>
+                            <ListBoxItem Height="100" Width="100">Server 4</ListBoxItem>
+                        </ListBox>
 
                         <!--Buttons-->
-                        <Grid Grid.Row="1">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
 
                             <!--Add button-->
-                            <Button Content="Add" Name="test" Click="showAdd" FontSize="15" FontWeight="Medium" Margin="0, 0, 10 ,0" Grid.Column="0" Style="{StaticResource appButtonStyle}" 
+                            <Button Content="Add" Name="test" Click="showAdd" FontSize="15" FontWeight="Medium" Margin="0, 0, 10 ,0" Grid.Row="0" Style="{StaticResource appButtonStyle}" 
                                     Template="{StaticResource appButtonTemplate}">
                             </Button>
 
                             <!--Delete button-->
-                            <Button Content="Delete" FontSize="15" FontWeight="Medium" Margin="0, 0, 10 ,0" Grid.Column="1" Style="{StaticResource appButtonStyle}" Template="{StaticResource appButtonTemplate}" ></Button>
+                            <Button Content="Delete" FontSize="15" FontWeight="Medium" Margin="0, 0, 10 ,0" Grid.Row="1" Style="{StaticResource appButtonStyle}" Template="{StaticResource appButtonTemplate}" ></Button>
                         </Grid>
                     </Grid>
                 </Grid>
@@ -205,7 +217,7 @@
 
                         <StackPanel Orientation="Horizontal" Margin="10, -130, -100, 0">
                             <StackPanel>
-                                <Border Width="700" Height="35" Background="#3DDDC2" Margin="150, 0, 0, 0" CornerRadius="20" />
+                                <Border Width="700" Height="35" Background="#3DDDC2" Margin="50, 50, 0, 0" CornerRadius="20" />
                                 <Border Width="700" Height="35" Background="#37c1fe" Margin="0, 15, 0, 0" CornerRadius="20" />
                                 <Border Width="700" Height="35" Background="#04a5b2" Margin="75, 15, 0, 0" CornerRadius="20" />
                             </StackPanel>
