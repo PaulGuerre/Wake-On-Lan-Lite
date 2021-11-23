@@ -186,10 +186,11 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition />
                                 <RowDefinition />
+                                <RowDefinition />
                             </Grid.RowDefinitions>
 
                             <!--Add button-->
-                            <Button Content="Add" Name="test" Click="showAdd" FontSize="15" FontWeight="Medium" Margin="0, 0, 10 ,0" Grid.Row="0" Style="{StaticResource appButtonStyle}" 
+                            <Button Content="Add" Name="test" FontSize="15" FontWeight="Medium" Margin="0, 0, 10 ,0" Grid.Row="0" Style="{StaticResource appButtonStyle}" 
                                     Template="{StaticResource appButtonTemplate}">
                             </Button>
 

@@ -1,4 +1,8 @@
 ﻿using System.IO;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Wake_On_Lan_Lite
 {
@@ -27,9 +31,24 @@ namespace Wake_On_Lan_Lite
             }
         }
 
-        void addAddress()
+        //Function that add a new device in the json file
+        public void addAddress(Device device)
         {
-            
+            List<Device> devices = getAllAddresses();
+            devices.Add(device);
+
+            List<string> name = new List<string>();
+            List<string> address = new List<string>();
+
+            foreach(Device d in devices)
+            {
+                name.Add(d.NAME);
+                address.Add(d.ADDRESS); ;
+            }
+
+            var objects = new { name, address };          
+
+            File.WriteAllText(PATHFILE, JsonConvert.SerializeObject(objects));
         }
 
         void deleteAddress()
@@ -37,18 +56,19 @@ namespace Wake_On_Lan_Lite
 
         }
 
-        void getAllAddresses()
+        //Function that return the list of all the devices stocked in the json file
+        public List<Device> getAllAddresses()
         {
-            /*JObject o1 = JObject.Parse(File.ReadAllText(PATHFILE));
-
-            // read JSON directly from a file
-            using (StreamReader file = File.OpenText(PATHFILE))
-            using (JsonTextReader reader = new JsonTextReader(file))
+            List<Device> devices = new List<Device>();
+            JObject data = JObject.Parse(File.ReadAllText(PATHFILE));
+            List<string> name = data["name"].Select(t => (string)t).ToList();
+            List<string> address = data["address"].Select(t => (string)t).ToList();
+            for(int i = 0; i < name.Count; i ++)
             {
-                JObject o2 = (JObject)JToken.ReadFrom(reader);
+                devices.Add(new Device() { NAME = name[i], ADDRESS = address[i] });
             }
 
-            return o1.ToString();*/
+            return devices;
         }
     }
 }
