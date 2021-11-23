@@ -183,7 +183,6 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition />
                                 <RowDefinition />
-                                <RowDefinition />
                             </Grid.RowDefinitions>
 
                             <!--Add button-->

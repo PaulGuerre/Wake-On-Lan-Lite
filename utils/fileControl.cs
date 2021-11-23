@@ -17,17 +17,23 @@ namespace Wake_On_Lan_Lite
         //Function that creates the folder and the file if they don't exist
         public void createFileIfNotExist()
         {
+            List<string> name = new List<string>();
+            List<string> address = new List<string>();
+            var objects = new { name, address };
+
             if (Directory.Exists(PATH))
             {
                 if (!File.Exists(PATHFILE))
                 {
-                    File.Create(PATHFILE);
+                    File.Create(PATHFILE).Dispose();
+                    File.WriteAllText(PATHFILE, JsonConvert.SerializeObject(objects));
                 }
             }
             else
             {
                 Directory.CreateDirectory(PATH);
-                File.Create(PATHFILE);
+                File.Create(PATHFILE).Dispose();
+                File.WriteAllText(PATHFILE, JsonConvert.SerializeObject(objects));
             }
         }
 
