@@ -15,6 +15,10 @@ namespace Wake_On_Lan_Lite
 
             fileControl file = new fileControl();
             file.createFileIfNotExist();
+
+            List<Device> devices = file.getAllAddresses();
+
+            deviceList.ItemsSource = devices;
         }
 
         // Can execute

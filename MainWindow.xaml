@@ -112,13 +112,15 @@
 
             <!--ListBox item style-->
             <Style x:Key="itemContainerStyle" TargetType="ListBoxItem">
-                
+                <Setter Property="Width" Value="100" />
+                <Setter Property="Height" Value="100" />
                 <Setter Property="Background" Value="#37c1fe" />
                 <Setter Property="HorizontalContentAlignment" Value="Center" />
                 <Setter Property="FontSize" Value="15" />
                 <Setter Property="FontWeight" Value="Medium" />
                 <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis" />
                 <Setter Property="Margin" Value="5" />
+                <Setter Property="Content" Value="{Binding NAME}" />
                 <Style.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="50"/>
@@ -174,12 +176,7 @@
                         </Grid.ColumnDefinitions>
 
                         <!--ListBox-->
-                        <ListBox Grid.Column="1" Background="Transparent" BorderBrush="Transparent" ItemContainerStyle="{DynamicResource itemContainerStyle}" ScrollViewer.VerticalScrollBarVisibility="Disabled">
-                            <ListBoxItem Height="100" Width="100">Server 1</ListBoxItem>
-                            <ListBoxItem Height="100" Width="100">Server 2</ListBoxItem>
-                            <ListBoxItem Height="100" Width="100">Server 3</ListBoxItem>
-                            <ListBoxItem Height="100" Width="100">Server 4</ListBoxItem>
-                        </ListBox>
+                        <ListBox x:Name="deviceList" Grid.Column="1" Background="Transparent" BorderBrush="Transparent" ItemContainerStyle="{DynamicResource itemContainerStyle}" ScrollViewer.VerticalScrollBarVisibility="Disabled"></ListBox>
 
                         <!--Buttons-->
                         <Grid Grid.Column="0">
