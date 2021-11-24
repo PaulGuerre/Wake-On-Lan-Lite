@@ -1,24 +1,25 @@
 ﻿using System;
-using System.Windows;
-using System.Windows.Input;
 using System.Collections.Generic;
+using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 
 namespace Wake_On_Lan_Lite
 {
-    public partial class MainWindow : Window
+    /// <summary>
+    /// Logique d'interaction pour editDevice.xaml
+    /// </summary>
+    public partial class editDevice : Window
     {
-        private List<Device> devices = new List<Device>();
-
-        public MainWindow()
+        public editDevice()
         {
             InitializeComponent();
-
-            fileControl file = new fileControl();
-            file.createFileIfNotExist();
-
-            List<Device> devices = file.getAllAddresses();
-
-            deviceList.ItemsSource = devices;
         }
 
         // Can execute
@@ -39,12 +40,12 @@ namespace Wake_On_Lan_Lite
             SystemCommands.CloseWindow(this);
         }
 
-        private void showEditDevice(object sender, RoutedEventArgs e)
+        private void editDeviceClick(object sender, RoutedEventArgs e)
         {
-            editDevice edit = new editDevice();
-            edit.editDeviceTitle.Text = "Add device";
-            edit.editDeviceButton.Content = "Add";
-            edit.Show();
+            fileControl file = new fileControl();
+            file.addAddress(new Device() { NAME = nameTextBox.Text, ADDRESS = addressTextBox.Text });
+
+            this.Close();
         }
     }
 }

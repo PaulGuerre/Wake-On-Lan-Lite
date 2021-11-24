@@ -120,6 +120,7 @@
                 <Setter Property="FontWeight" Value="Medium" />
                 <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis" />
                 <Setter Property="Margin" Value="5" />
+                <Setter Property="Foreground" Value="White" />
                 <Setter Property="Content" Value="{Binding NAME}" />
                 <Style.Resources>
                     <Style TargetType="Border">
@@ -167,7 +168,7 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
-                <!--Datagrid-->
+                <!--ListBox-->
                 <Grid Grid.Column="0" Margin="25">
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -186,7 +187,7 @@
                             </Grid.RowDefinitions>
 
                             <!--Add button-->
-                            <Button Content="Add" Name="test" FontSize="15" FontWeight="Medium" Margin="0, 0, 10 ,0" Grid.Row="0" Style="{StaticResource appButtonStyle}" 
+                            <Button Content="Add" Name="test" Click="showEditDevice" FontSize="15" FontWeight="Medium" Margin="0, 0, 10 ,0" Grid.Row="0" Style="{StaticResource appButtonStyle}" 
                                     Template="{StaticResource appButtonTemplate}">
                             </Button>
 
