@@ -55,6 +55,9 @@
                     <Setter Property="Background" Value="#37c1fe" />
                     <Setter Property="Foreground" Value="White" />
                     <Setter Property="Cursor" Value="Hand" />
+                    <Setter Property="FontSize" Value="15" />
+                    <Setter Property="FontWeight" Value="Medium" />
+                    <Setter Property="Margin" Value="0, 0, 10, 0" />
                     <Style.Triggers>
                         <Trigger Property="IsPressed" Value="True">
                             <Setter Property="Background" Value="#3DDDC2" />
@@ -91,6 +94,12 @@
                     <Setter Property="FontSize" Value="15" />
                     <Setter Property="FontWeight" Value="Medium" />
                     <Setter Property="FontFamily" Value="Fonts/#Dosis" />
+                    <Setter Property="CaretBrush" Value="White" />
+                    <Style.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="15" />
+                        </Style>
+                    </Style.Resources>
                 </Style>
                 
         </ResourceDictionary>
@@ -98,7 +107,8 @@
 
         <!--Title bar button commands-->
         <Window.CommandBindings>
-            <CommandBinding Command="{x:Static SystemCommands.MinimizeWindowCommand}" CanExecute="CommandBinding_CanExecute" Executed="CommandBinding_Executed_Minimize" />
+            <CommandBinding Command="{x:Static SystemCommands.MinimizeWindowCommand}" CanExecute="CommandBinding_CanExecute" 
+                            Executed="CommandBinding_Executed_Minimize" />
             <CommandBinding Command="{x:Static SystemCommands.CloseWindowCommand}" CanExecute="CommandBinding_CanExecute" Executed="CommandBinding_Executed_Close" />
         </Window.CommandBindings>
 
@@ -121,8 +131,10 @@
 
                     <!--Caption buttons-->
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
-                        <Button Style="{StaticResource MinimizeButtonStyle}" WindowChrome.IsHitTestVisibleInChrome="True" ToolTip="Minimize" Command="{x:Static SystemCommands.MinimizeWindowCommand}"/>
-                        <Button Style="{StaticResource CloseButtonStyle}" WindowChrome.IsHitTestVisibleInChrome="True" ToolTip="Close" Command="{x:Static SystemCommands.CloseWindowCommand}"/>
+                        <Button Style="{StaticResource MinimizeButtonStyle}" WindowChrome.IsHitTestVisibleInChrome="True" ToolTip="Minimize" 
+                                Command="{x:Static SystemCommands.MinimizeWindowCommand}"/>
+                        <Button Style="{StaticResource CloseButtonStyle}" WindowChrome.IsHitTestVisibleInChrome="True" ToolTip="Close" 
+                                Command="{x:Static SystemCommands.CloseWindowCommand}"/>
                     </StackPanel>
                 </Grid>
 
@@ -154,7 +166,8 @@
                     </Grid>
                     
                     <Grid Grid.Row="2">
-                        <Button x:Name="editDeviceButton" Content="Edit" Click="editDeviceClick" FontSize="15" FontWeight="Medium" Margin="0, 0, 10 ,0" Style="{StaticResource appButtonStyle}" Template="{StaticResource appButtonTemplate}"></Button>
+                        <Button x:Name="editDeviceButton" Content="Edit" Click="editDeviceClick" Style="{StaticResource appButtonStyle}" 
+                                Template="{StaticResource appButtonTemplate}"></Button>
                     </Grid>
                 </Grid>
             </Grid>

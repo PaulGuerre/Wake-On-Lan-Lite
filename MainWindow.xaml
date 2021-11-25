@@ -55,6 +55,9 @@
                 <Setter Property="Background" Value="#37c1fe" />
                 <Setter Property="Foreground" Value="White" />
                 <Setter Property="Cursor" Value="Hand" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="FontWeight" Value="Medium" />
+                <Setter Property="Margin" Value="0, 0, 10, 0" />
                 <Style.Triggers>
                     <Trigger Property="IsPressed" Value="True">
                         <Setter Property="Background" Value="#3DDDC2" />
@@ -157,8 +160,10 @@
 
                 <!--Caption buttons-->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
-                    <Button Style="{StaticResource MinimizeButtonStyle}" WindowChrome.IsHitTestVisibleInChrome="True" ToolTip="Minimize" Command="{x:Static SystemCommands.MinimizeWindowCommand}"/>
-                    <Button Style="{StaticResource CloseButtonStyle}" WindowChrome.IsHitTestVisibleInChrome="True" ToolTip="Close" Command="{x:Static SystemCommands.CloseWindowCommand}"/>
+                    <Button Style="{StaticResource MinimizeButtonStyle}" WindowChrome.IsHitTestVisibleInChrome="True" ToolTip="Minimize" 
+                            Command="{x:Static SystemCommands.MinimizeWindowCommand}" ></Button>
+                    <Button Style="{StaticResource CloseButtonStyle}" WindowChrome.IsHitTestVisibleInChrome="True" ToolTip="Close" 
+                            Command="{x:Static SystemCommands.CloseWindowCommand}" ></Button>
                 </StackPanel>
             </Grid>
 
@@ -177,7 +182,8 @@
                         </Grid.ColumnDefinitions>
 
                         <!--ListBox-->
-                        <ListBox x:Name="deviceList" Grid.Column="1" Background="Transparent" BorderBrush="Transparent" ItemContainerStyle="{DynamicResource itemContainerStyle}" ScrollViewer.VerticalScrollBarVisibility="Disabled"></ListBox>
+                        <ListBox x:Name="deviceList" Grid.Column="1" Background="Transparent" BorderBrush="Transparent" 
+                                 ItemContainerStyle="{DynamicResource itemContainerStyle}" ScrollViewer.VerticalScrollBarVisibility="Disabled" ></ListBox>
 
                         <!--Buttons-->
                         <Grid Grid.Column="0">
@@ -187,12 +193,11 @@
                             </Grid.RowDefinitions>
 
                             <!--Add button-->
-                            <Button Content="Add" Name="test" Click="showEditDevice" FontSize="15" FontWeight="Medium" Margin="0, 0, 10 ,0" Grid.Row="0" Style="{StaticResource appButtonStyle}" 
-                                    Template="{StaticResource appButtonTemplate}">
-                            </Button>
+                            <Button Content="Add" Name="test" Click="showEditDevice" Grid.Row="0" Style="{StaticResource appButtonStyle}" 
+                                    Template="{StaticResource appButtonTemplate}" ></Button>
 
                             <!--Delete button-->
-                            <Button Content="Delete" FontSize="15" FontWeight="Medium" Margin="0, 0, 10 ,0" Grid.Row="1" Style="{StaticResource appButtonStyle}" Template="{StaticResource appButtonTemplate}" ></Button>
+                            <Button Content="Delete" Grid.Row="1" Style="{StaticResource appButtonStyle}" Template="{StaticResource appButtonTemplate}" ></Button>
                         </Grid>
                     </Grid>
                 </Grid>
@@ -205,7 +210,7 @@
                     </Grid.RowDefinitions>
 
                     <!--Button-->
-                    <Button Content="Wake Up" FontSize="15" FontWeight="Medium" Margin="0, 0, 10 ,0" Grid.Row="0" Style="{StaticResource appButtonStyle}" Template="{StaticResource appButtonTemplate}" ></Button>
+                    <Button Content="Wake Up" Grid.Row="0" Style="{StaticResource appButtonStyle}" Template="{StaticResource appButtonTemplate}" ></Button>
 
                     <!--StackPanel lines-->
                     <Grid Grid.Row="1">
@@ -221,7 +226,6 @@
                             </StackPanel>
                         </StackPanel>
                     </Grid>
-
                 </Grid>
             </Grid>
         </Grid>
