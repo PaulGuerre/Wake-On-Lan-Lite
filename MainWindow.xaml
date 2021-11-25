@@ -190,14 +190,17 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition />
                                 <RowDefinition />
+                                <RowDefinition />
                             </Grid.RowDefinitions>
 
+                            <TextBox Grid.Row="2" x:Name="glonglon"></TextBox>
+
                             <!--Add button-->
-                            <Button Content="Add" Name="test" Click="showEditDevice" Grid.Row="0" Style="{StaticResource appButtonStyle}" 
+                            <Button Content="Add" Click="showEditDevice" Grid.Row="0" Style="{StaticResource appButtonStyle}" 
                                     Template="{StaticResource appButtonTemplate}" ></Button>
 
                             <!--Delete button-->
-                            <Button Content="Delete" Grid.Row="1" Style="{StaticResource appButtonStyle}" Template="{StaticResource appButtonTemplate}" ></Button>
+                            <Button Content="Delete" Click="deleteDevice" Grid.Row="1" Style="{StaticResource appButtonStyle}" Template="{StaticResource appButtonTemplate}" ></Button>
                         </Grid>
                     </Grid>
                 </Grid>

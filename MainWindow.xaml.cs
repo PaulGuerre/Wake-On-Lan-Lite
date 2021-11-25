@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Input;
-using System.Collections.Generic;
 
 namespace Wake_On_Lan_Lite
 {
@@ -24,6 +23,24 @@ namespace Wake_On_Lan_Lite
             this.deviceList.ItemsSource = file.getAllAddresses();
         }
 
+        //Show the edit device window to add or update a device
+        public void showEditDevice(object sender, RoutedEventArgs e)
+        {
+            editDevice edit = new editDevice(this);
+            edit.editDeviceTitle.Text = "Add device";
+            edit.editDeviceButton.Content = "Add";
+            edit.Show();
+        }
+
+        //Delete a device
+        public void deleteDevice(object sender, RoutedEventArgs e)
+        {
+            Device device = (Device)this.deviceList.SelectedItem;
+            this.file.deleteAddress(device, this);
+
+            dataRefresh();
+        }
+
         // Can execute
         private void CommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -40,14 +57,6 @@ namespace Wake_On_Lan_Lite
         private void CommandBinding_Executed_Close(object sender, ExecutedRoutedEventArgs e)
         {
             SystemCommands.CloseWindow(this);
-        }
-
-        private void showEditDevice(object sender, RoutedEventArgs e)
-        {
-            editDevice edit = new editDevice(this);
-            edit.editDeviceTitle.Text = "Add device";
-            edit.editDeviceButton.Content = "Add";
-            edit.Show();
         }
     }
 }
