@@ -46,7 +46,14 @@ namespace Wake_On_Lan_Lite
         private void editDeviceClick(object sender, RoutedEventArgs e)
         {
             fileControl file = new fileControl();
-            file.addAddress(new Device() { ID = file.getAllAddresses().Count ,NAME = nameTextBox.Text, ADDRESS = addressTextBox.Text });
+            if(editDeviceButton.Content.ToString() == "Add")
+            {
+                file.addAddress(new Device() { ID = file.getAllAddresses().Count, NAME = nameTextBox.Text, ADDRESS = addressTextBox.Text });
+            }
+            else
+            {
+                //
+            }
             this.main.dataRefresh();
 
             this.Close();

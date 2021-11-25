@@ -183,7 +183,7 @@
 
                         <!--ListBox-->
                         <ListBox x:Name="deviceList" Grid.Column="1" Background="Transparent" BorderBrush="Transparent" 
-                                 ItemContainerStyle="{DynamicResource itemContainerStyle}" ScrollViewer.VerticalScrollBarVisibility="Disabled" ></ListBox>
+                                 ItemContainerStyle="{DynamicResource itemContainerStyle}" ScrollViewer.VerticalScrollBarVisibility="Disabled" MouseDoubleClick="showEditDevice" ></ListBox>
 
                         <!--Buttons-->
                         <Grid Grid.Column="0">
