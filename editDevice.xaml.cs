@@ -17,9 +17,12 @@ namespace Wake_On_Lan_Lite
     /// </summary>
     public partial class editDevice : Window
     {
-        public editDevice()
+        private MainWindow main;
+
+        public editDevice(MainWindow main)
         {
             InitializeComponent();
+            this.main = main;
         }
 
         // Can execute
@@ -44,6 +47,7 @@ namespace Wake_On_Lan_Lite
         {
             fileControl file = new fileControl();
             file.addAddress(new Device() { NAME = nameTextBox.Text, ADDRESS = addressTextBox.Text });
+            this.main.dataRefresh();
 
             this.Close();
         }

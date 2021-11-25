@@ -7,18 +7,21 @@ namespace Wake_On_Lan_Lite
 {
     public partial class MainWindow : Window
     {
-        private List<Device> devices = new List<Device>();
+        private fileControl file = new fileControl();
 
         public MainWindow()
         {
             InitializeComponent();
 
-            fileControl file = new fileControl();
             file.createFileIfNotExist();
 
-            List<Device> devices = file.getAllAddresses();
+            dataRefresh();
+        }
 
-            deviceList.ItemsSource = devices;
+        public void dataRefresh()
+        {
+            this.deviceList.ItemsSource = null;
+            this.deviceList.ItemsSource = file.getAllAddresses();
         }
 
         // Can execute
@@ -41,7 +44,7 @@ namespace Wake_On_Lan_Lite
 
         private void showEditDevice(object sender, RoutedEventArgs e)
         {
-            editDevice edit = new editDevice();
+            editDevice edit = new editDevice(this);
             edit.editDeviceTitle.Text = "Add device";
             edit.editDeviceButton.Content = "Add";
             edit.Show();
