@@ -138,6 +138,7 @@
                     </StackPanel>
                 </Grid>
 
+                <!--Main content-->
                 <Grid Grid.Row="1">
                     <Grid.RowDefinitions>
                         <RowDefinition />
@@ -151,7 +152,7 @@
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
 
-                    <Label Grid.Column="0" Style="{StaticResource appLabelStyle}" >Name :</Label>
+                        <Label Grid.Column="0" Style="{StaticResource appLabelStyle}" >Name :</Label>
                         <TextBox Grid.Column="1" x:Name="nameTextBox" Style="{StaticResource appTextboxStyle}" ></TextBox>
                     </Grid>
                     
@@ -160,8 +161,8 @@
                             <ColumnDefinition Width="100"/>
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
-
-                    <Label Grid.Column="0" Style="{StaticResource appLabelStyle}">Address :</Label>
+   
+                        <Label Grid.Column="0" Style="{StaticResource appLabelStyle}">Address :</Label>
                         <TextBox Grid.Column="1" x:Name="addressTextBox" Style="{StaticResource appTextboxStyle}" ></TextBox>
                     </Grid>
                     
