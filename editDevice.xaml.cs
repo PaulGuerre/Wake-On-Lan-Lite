@@ -1,14 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Wake_On_Lan_Lite
 {
@@ -43,6 +34,7 @@ namespace Wake_On_Lan_Lite
             SystemCommands.CloseWindow(this);
         }
 
+        //Function that add or update device
         private void editDeviceClick(object sender, RoutedEventArgs e)
         {
             fileControl file = new fileControl();
@@ -52,7 +44,8 @@ namespace Wake_On_Lan_Lite
             }
             else
             {
-                //
+                Device updateDevice = (Device)main.deviceList.SelectedItem;
+                file.updateAddress(new Device() { ID = updateDevice.ID, NAME = nameTextBox.Text, ADDRESS = addressTextBox.Text });
             }
             this.main.dataRefresh();
 

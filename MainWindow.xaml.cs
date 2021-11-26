@@ -1,6 +1,4 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows;
 using System.Windows.Input;
 
 namespace Wake_On_Lan_Lite
@@ -18,6 +16,7 @@ namespace Wake_On_Lan_Lite
             dataRefresh();
         }
 
+        //Function that refresh listBox data
         public void dataRefresh()
         {
             this.deviceList.ItemsSource = null;
@@ -28,8 +27,21 @@ namespace Wake_On_Lan_Lite
         public void showEditDevice(object sender, RoutedEventArgs e)
         {
             editDevice edit = new editDevice(this);
-            edit.editDeviceTitle.Text = sender.ToString().Contains("Button") ? "Add device" : "Update device";
-            edit.editDeviceButton.Content = sender.ToString().Contains("Button") ? "Add" : "Update";
+            Device device = (Device)this.deviceList.SelectedItem;
+
+            if (sender.ToString().Contains("Button"))
+            {
+                edit.editDeviceTitle.Text = "Add device";
+                edit.editDeviceButton.Content = "Add";
+            }
+            else
+            {
+                edit.editDeviceTitle.Text = "Update device";
+                edit.editDeviceButton.Content = "Update";
+                edit.nameTextBox.Text = device.NAME;
+                edit.addressTextBox.Text = device.ADDRESS;
+            }
+
             edit.Show();
         }
 

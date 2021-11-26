@@ -3,7 +3,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows;
 
 namespace Wake_On_Lan_Lite
 {
@@ -89,17 +88,14 @@ namespace Wake_On_Lan_Lite
             File.WriteAllText(PATHFILE, JsonConvert.SerializeObject(objects));
         }
 
+        //Function that update the selected device
         public void updateAddress(Device device)
         {
             List<Device> devices = getAllAddresses();
-            foreach (Device d in devices.ToList())
-            {
-                if (d.ID == device.ID)
-                {
-                    d.NAME = device.NAME;
-                    d.ADDRESS = device.ADDRESS;
-                }
-            }
+
+            var updateDevice = devices.FirstOrDefault(x => x.ID == device.ID);
+            updateDevice.NAME = device.NAME;
+            updateDevice.ADDRESS = device.ADDRESS;
 
             List<int> id = new List<int>();
             List<string> name = new List<string>();

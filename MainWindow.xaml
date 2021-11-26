@@ -190,10 +190,7 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition />
                                 <RowDefinition />
-                                <RowDefinition />
                             </Grid.RowDefinitions>
-
-                            <TextBox Grid.Row="2" x:Name="glonglon"></TextBox>
 
                             <!--Add button-->
                             <Button Content="Add" Click="showEditDevice" Grid.Row="0" Style="{StaticResource appButtonStyle}" 
