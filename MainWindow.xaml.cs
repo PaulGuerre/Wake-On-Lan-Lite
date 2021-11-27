@@ -29,7 +29,7 @@ namespace Wake_On_Lan_Lite
             editDevice edit = new editDevice(this);
             Device device = (Device)this.deviceList.SelectedItem;
 
-            if (sender.ToString().Contains("Button"))
+            if (sender.ToString().Contains("Button") || device.NAME == "+")
             {
                 edit.editDeviceTitle.Text = "Add device";
                 edit.editDeviceButton.Content = "Add";
@@ -52,6 +52,25 @@ namespace Wake_On_Lan_Lite
             this.file.deleteAddress(device, this);
 
             dataRefresh();
+        }
+
+        //Send the magic packet
+        private void WakeUp(object sender, RoutedEventArgs e)
+        {
+            Device device = (Device)this.deviceList.SelectedItem;
+
+            if(device != null)
+            {
+                networkControl nc = new networkControl();
+                nc.wakeUp(device.ADDRESS);
+            }
+            else
+            {
+                appMessageBox appMessage = new appMessageBox();
+                appMessage.Show();
+
+                appMessage.showMsg("Please choose a device");
+            }
         }
 
         // Can execute

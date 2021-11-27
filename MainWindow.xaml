@@ -173,7 +173,7 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
-                <!--ListBox-->
+                <!--Main content-->
                 <Grid Grid.Column="0" Margin="25">
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -210,7 +210,7 @@
                     </Grid.RowDefinitions>
 
                     <!--Button-->
-                    <Button Content="Wake Up" Grid.Row="0" Style="{StaticResource appButtonStyle}" Template="{StaticResource appButtonTemplate}" ></Button>
+                    <Button Content="Wake Up" Click="WakeUp" Grid.Row="0" Style="{StaticResource appButtonStyle}" Template="{StaticResource appButtonTemplate}" ></Button>
 
                     <!--StackPanel lines-->
                     <Grid Grid.Row="1">

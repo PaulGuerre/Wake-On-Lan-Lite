@@ -10,7 +10,7 @@ namespace Wake_On_Lan_Lite
     {
         
         //Function that sends the magic packet according to the mac address parameter
-        void wakeUp(string MAC_ADDRESS)
+        public void wakeUp(string MAC_ADDRESS)
         {
             //Regex for a real mac address
             MAC_ADDRESS = Regex.Replace(MAC_ADDRESS, "[-|:]", "");

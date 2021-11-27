@@ -20,6 +20,9 @@ namespace Wake_On_Lan_Lite
             List<int> id = new List<int>();
             List<string> name = new List<string>();
             List<string> address = new List<string>();
+            id.Add(0);
+            name.Add("+");
+            address.Add("aa:bb:cc:dd:ee:ff");
             var objects = new { id, name, address };
 
             if (Directory.Exists(PATH))
