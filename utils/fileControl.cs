@@ -11,8 +11,8 @@ namespace Wake_On_Lan_Lite
     class fileControl
     {
 
-        private const string PATH = @"C:\Program Files (x86)\Wake On Lan Lite";
-        private const string PATHFILE = @"C:\Program Files (x86)\Wake On Lan Lite\mac_address.json";
+        private const string PATH = @"C:\Wake On Lan Lite";
+        private const string PATHFILE = @"C:\Wake On Lan Lite\mac_address.json";
 
         //Function that creates the folder and the file if they don't exist
         public void createFileIfNotExist()
