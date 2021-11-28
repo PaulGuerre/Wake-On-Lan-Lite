@@ -71,7 +71,7 @@ namespace Wake_On_Lan_Lite
             {
                 if(d.ID == device.ID)
                 {
-                    devices.RemoveAt(device.ID);
+                    devices.Remove(d);
                 }
             }
 
