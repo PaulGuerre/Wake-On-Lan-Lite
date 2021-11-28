@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wake_On_Lan_Lite"
         mc:Ignorable="d"
-        Title="appMessageBox" Height="125" Width="210"
+        Title="Error" Height="125" Width="210"
         Background="#181735"
         ResizeMode="NoResize">
 
@@ -107,7 +107,7 @@
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
                         <!--App icon-->
                         <!--<Image Source="/Resources/wol.ico" Width="18" Margin="2" HorizontalAlignment="Left" VerticalAlignment="Center" />-->
-                        <TextBlock x:Name="editDeviceTitle" Text="Wake On Lan Lite" Margin="10 3 0 0" Foreground="#37c1fe"/>
+                        <TextBlock x:Name="editDeviceTitle" Text="Error" Margin="10 3 0 0" Foreground="#37c1fe"/>
                     </StackPanel>
 
                     <!--Caption buttons-->

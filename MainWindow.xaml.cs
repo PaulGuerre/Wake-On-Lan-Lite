@@ -49,9 +49,19 @@ namespace Wake_On_Lan_Lite
         public void deleteDevice(object sender, RoutedEventArgs e)
         {
             Device device = (Device)this.deviceList.SelectedItem;
-            this.file.deleteAddress(device, this);
 
-            dataRefresh();
+            if(device != null && device.NAME != "+")
+            {
+                this.file.deleteAddress(device, this);
+                dataRefresh();
+            }
+            else
+            {
+                appMessageBox appMessage = new appMessageBox();
+                appMessage.Show();
+
+                appMessage.showMsg("Please select a device");
+            }
         }
 
         //Send the magic packet
@@ -59,7 +69,7 @@ namespace Wake_On_Lan_Lite
         {
             Device device = (Device)this.deviceList.SelectedItem;
 
-            if(device != null)
+            if(device != null && device.NAME != "+")
             {
                 networkControl nc = new networkControl();
                 nc.wakeUp(device.ADDRESS);
@@ -69,7 +79,7 @@ namespace Wake_On_Lan_Lite
                 appMessageBox appMessage = new appMessageBox();
                 appMessage.Show();
 
-                appMessage.showMsg("Please choose a device");
+                appMessage.showMsg("Please select a device");
             }
         }
 

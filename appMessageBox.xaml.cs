@@ -12,11 +12,13 @@ namespace Wake_On_Lan_Lite
             InitializeComponent();
         }
 
+        //Show asked error message
         public void showMsg(string msg)
         {
             message.Content = msg;
         }
 
+        //Close the window
         private void closeWindow(object sender, RoutedEventArgs e)
         {
             this.Close();
