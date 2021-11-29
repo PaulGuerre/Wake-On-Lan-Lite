@@ -5,17 +5,28 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>Wake_On_Lan_Lite</RootNamespace>
     <UseWPF>true</UseWPF>
-    <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationIcon>Resources\wol_full.ico</ApplicationIcon>
     <SignAssembly>false</SignAssembly>
     <Authors>Sukine Corp</Authors>
-    <Copyright />
+    <Copyright>Copyright (c) 2021 Sukine Corporation</Copyright>
+    <NoWin32Manifest>true</NoWin32Manifest>
+    <Description>Simple Wake On Lan software that allows you to wake up a computer on your local network</Description>
+    <PackageLicenseFile></PackageLicenseFile>
+    <PackageProjectUrl>https://wol.sukine.fr/</PackageProjectUrl>
+    <PackageIcon>wol_full.png</PackageIcon>
+    <PackageIconUrl />
+    <RepositoryUrl>https://github.com/Paulobergine/Wake-On-Lan-Lite</RepositoryUrl>
+    <RepositoryType>Github</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove=".gitignore" />
     <None Remove="LICENCE" />
     <None Remove="README.md" />
+    <None Include="Resources\wol_full.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
