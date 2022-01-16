@@ -50,7 +50,7 @@ namespace Wake_On_Lan_Lite
         {
             Device device = (Device)this.deviceList.SelectedItem;
 
-            if(device != null && device.NAME != "+")
+            if (device != null && device.NAME != "+")
             {
                 this.file.deleteAddress(device, this);
                 dataRefresh();
@@ -69,10 +69,13 @@ namespace Wake_On_Lan_Lite
         {
             Device device = (Device)this.deviceList.SelectedItem;
 
-            if(device != null && device.NAME != "+")
+            if (device != null && device.NAME != "+")
             {
                 networkControl nc = new networkControl();
+                notificationService ns = new notificationService();
+                
                 nc.wakeUp(device.ADDRESS);
+                ns.sendNotification(device.NAME);
             }
             else
             {
