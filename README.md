@@ -1,6 +1,6 @@
 # WOL-Lite
 
-Simple Wake On Lan software that allows you to wake up a computer on your local network
+## Simple Wake On Lan software that allows you to wake up a computer on your local network
 
 ![mainPage+](https://user-images.githubusercontent.com/56794631/149661114-346717c9-e778-4391-870e-3476fe88d6cf.png)
 
