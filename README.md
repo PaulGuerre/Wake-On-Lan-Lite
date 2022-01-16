@@ -4,7 +4,7 @@
 
 <br />
 
-![mainPage+](https://user-images.githubusercontent.com/56794631/149661114-346717c9-e778-4391-870e-3476fe88d6cf.png)
+![mainPage+](https://user-images.githubusercontent.com/56794631/149661114-346717c9-e778-4391-870e-3476fe88d6cf.png) <br />
 Main page
 
 ![mainPage](https://user-images.githubusercontent.com/56794631/149661118-3487dc1c-f963-4c54-b09e-f2333136ce4d.png)
